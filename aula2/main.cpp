@@ -3,9 +3,12 @@
 
 int main(int argc, char *argv[])
 {
-    show2images();
-    to_YUV();
-    return to_Gray();
+    int return_val;
+    return_val = show2images();
+    //return_val = to_YUV();
+    //return_val = to_Gray();
+    //return_val = modifyAndSave();
+    return return_val;
 }
 
 

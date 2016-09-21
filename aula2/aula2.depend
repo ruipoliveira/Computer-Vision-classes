@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1474468859 source:/home/roliveira/Documentos/repGitHub/CV1617/aula2/main.cpp
+1474493970 source:/home/roliveira/Documentos/repGitHub/CV1617/aula2/main.cpp
 	"ex4.h"
 
 1474454366 source:/home/roliveira/Documentos/repGitHub/CV1617/aula2/main2.cpp
@@ -7,13 +7,14 @@
 	<opencv2/imgproc/imgproc.hpp>
 	<opencv2/highgui/highgui.hpp>
 
-1474468859 /home/roliveira/Documentos/repGitHub/CV1617/aula2/ex4.h
+1474492985 /home/roliveira/Documentos/repGitHub/CV1617/aula2/ex4.h
 
-1474468859 source:/home/roliveira/Documentos/repGitHub/CV1617/aula2/ex4.cpp
+1474494370 source:/home/roliveira/Documentos/repGitHub/CV1617/aula2/ex4.cpp
 	"ex4.h"
 	<opencv2/core/core.hpp>
 	<opencv2/imgproc/imgproc.hpp>
 	<opencv2/highgui/highgui.hpp>
+	<iostream>
 
 1474463162 source:/home/tomas/Dropbox/UNIVERSIDADE/5Ano/VC/CV1617-68779-68129/aula2/ex4.cpp
 	"ex4.h"
