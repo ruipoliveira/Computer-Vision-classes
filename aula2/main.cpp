@@ -1,10 +1,11 @@
-
 #include "ex4.h"
 
 
 int main(int argc, char *argv[])
 {
-    return MyFunc();
+    show2images();
+    to_YUV();
+    return to_Gray();
 }
 
 
