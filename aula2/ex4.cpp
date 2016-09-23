@@ -110,3 +110,41 @@ int modifyAndSave(){
     waitKey(0);
 }
 
+/*
+* Exercicio 6
+* http://docs.opencv.org/2.4/doc/tutorials/core/basic_linear_transform/basic_linear_transform.html
+*/
+int contrastAndBrightness(){
+
+    double alpha; /**< Simple contrast control */
+    int beta;  /**< Simple brightness control */
+
+    Mat img = imread("../images/lena.jpg", CV_LOAD_IMAGE_COLOR);
+
+    Mat new_image = Mat::zeros( img.size(), img.type() );
+
+    std::cout<<" Basic Linear Transforms "<<std::endl;
+    std::cout<<"-------------------------"<<std::endl;
+    std::cout<<"* Enter the alpha value [1.0-3.0]: ";std::cin>>alpha;
+    std::cout<<"* Enter the beta value [0-100]: "; std::cin>>beta;
+
+    /// Do the operation new_image(i,j) = alpha*image(i,j) + beta
+    for( int y = 0; y < img.rows; y++ ){
+        for( int x = 0; x < img.cols; x++ ){
+            for( int c = 0; c < 3; c++ ){
+                new_image.at<Vec3b>(y,x)[c] = saturate_cast<uchar>( alpha*( img.at<Vec3b>(y,x)[c] ) + beta );
+            }
+        }
+    }
+
+
+    namedWindow("Original Image", 1);
+    namedWindow("New Image", 1);
+
+    /// Show stuff
+    imshow("Original Image", img);
+    imshow("New Image", new_image);
+
+    waitKey();
+
+}
