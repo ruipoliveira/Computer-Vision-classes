@@ -6,6 +6,73 @@
 
 using namespace cv;
 
+
+/*
+* Exercício 4 converter para binário
+*/
+int modifyAndSave(){
+
+    Mat img = imread("../images/lena.jpg", CV_LOAD_IMAGE_COLOR);
+
+    if(img.empty())
+       return -1;
+
+    cvtColor( img, img, CV_BGR2GRAY );
+
+    threshold(img, img, 100, 255, THRESH_BINARY);
+
+    imwrite( "../images/lena_bin.jpg", img );
+
+    imshow("lena_bin", img);
+
+    waitKey(0);
+}
+
+/*
+* Exercício 4 converter para gray
+*/
+int to_Gray() {
+
+    Mat gray_image;
+    Mat img = imread("../images/lena.jpg", CV_LOAD_IMAGE_COLOR);
+
+    if(img.empty())
+       return -1;
+
+    cvtColor( img, gray_image, CV_BGR2GRAY );
+
+    namedWindow( "lena", CV_WINDOW_AUTOSIZE);
+    imshow("lena_cinza", gray_image);
+
+    waitKey(0);
+
+}
+
+/*
+* Exercício 4 converter para YUV
+*/
+
+int to_YUV() {
+
+    Mat yuv_image;
+    Mat img = imread("../images/lena.jpg", CV_LOAD_IMAGE_COLOR);
+
+    if(img.empty())
+       return -1;
+
+    cvtColor( img, yuv_image, CV_BGR2YUV );
+
+    namedWindow( "lena", CV_WINDOW_AUTOSIZE);
+    imshow("lena_yuv", yuv_image);
+
+    waitKey(0);
+
+}
+
+
+/*
+* Exercício 5
+*/
 int show2images() {
 
 double alpha = 0.5; double beta; double input;
@@ -40,75 +107,9 @@ double alpha = 0.5; double beta; double input;
  waitKey(0);
 
 
-
-/*
-    Mat img1 = imread("../images/lena.jpg", CV_LOAD_IMAGE_COLOR);
-    Mat img2 = imread("../images/deti.jpg", CV_LOAD_IMAGE_COLOR);
-
-    if(img1.empty() || img2.empty())
-       return -1;
-
-    namedWindow( "lena", CV_WINDOW_AUTOSIZE);
-    imshow("lena", img1);
-
-    namedWindow( "deti", CV_WINDOW_AUTOSIZE);
-    imshow("deti", img2);
-
-    waitKey(0);
-*/
 }
 
-int to_Gray() {
 
-    Mat gray_image;
-    Mat img = imread("../images/lena.jpg", CV_LOAD_IMAGE_COLOR);
-
-    if(img.empty())
-       return -1;
-
-    cvtColor( img, gray_image, CV_BGR2GRAY );
-
-    namedWindow( "lena", CV_WINDOW_AUTOSIZE);
-    imshow("lena_cinza", gray_image);
-
-    waitKey(0);
-
-}
-
-int to_YUV() {
-
-    Mat yuv_image;
-    Mat img = imread("../images/lena.jpg", CV_LOAD_IMAGE_COLOR);
-
-    if(img.empty())
-       return -1;
-
-    cvtColor( img, yuv_image, CV_BGR2YUV );
-
-    namedWindow( "lena", CV_WINDOW_AUTOSIZE);
-    imshow("lena_yuv", yuv_image);
-
-    waitKey(0);
-
-}
-
-int modifyAndSave(){
-
-    Mat img = imread("../images/lena.jpg", CV_LOAD_IMAGE_COLOR);
-
-    if(img.empty())
-       return -1;
-
-    cvtColor( img, img, CV_BGR2GRAY );
-
-    threshold(img, img, 100, 255, THRESH_BINARY);
-
-    imwrite( "../images/lena_bin.jpg", img );
-
-    imshow("lena_bin", img);
-
-    waitKey(0);
-}
 
 /*
 * Exercicio 6
@@ -136,7 +137,6 @@ int contrastAndBrightness(){
             }
         }
     }
-
 
     namedWindow("Original Image", 1);
     namedWindow("New Image", 1);
