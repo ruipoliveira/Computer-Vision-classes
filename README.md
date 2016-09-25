@@ -1,11 +1,10 @@
-# CV1617-68779-68129
-VC classrom guides and OpenCV Project
+# Computer Vision
 
 
 ---
 ### Problems 
 #### Aula 2 (Cameras, Images and color spaces)
-* [Enunciation](https://github.com/toomyy94/CV1617-68779-68129/blob/master/docs/enunciation/VC1617-exercises02.pdf)
+* [Assignments](https://github.com/toomyy94/CV1617-68779-68129/blob/master/docs/enunciation/VC1617-exercises02.pdf)
 * [Report](https://github.com/toomyy94/CV1617-68779-68129/blob/master/docs/enunciation/VC1617-exercises02.pdf)
 * [Resolução](https://github.com/toomyy94/CV1617-68779-68129/tree/master/aula2)
 
