@@ -2,7 +2,7 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="aula2" />
+		<Option title="aula3" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
@@ -32,8 +32,8 @@
 		<Linker>
 			<Add option="`opencv-config --ldstaticflags`" />
 		</Linker>
-		<Unit filename="ex4.cpp" />
-		<Unit filename="ex4.h" />
+		<Unit filename="fileSource.cpp" />
+		<Unit filename="fileSource.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

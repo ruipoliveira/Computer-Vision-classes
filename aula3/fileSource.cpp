@@ -1,4 +1,4 @@
-#include "ex4.h"
+#include "fileSource.h"
 #include <opencv2/core/core.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
@@ -43,6 +43,7 @@ int to_Gray() {
 
     namedWindow( "lena", CV_WINDOW_AUTOSIZE);
     imshow("lena_cinza", gray_image);
+
 
     waitKey(0);
 
