@@ -1,15 +1,24 @@
 #include "fileSource.h"
+#include <opencv2/core/core.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
+#include <opencv2/highgui/highgui.hpp>
+#include <iostream>
 
+using namespace cv;
 
 int main(int argc, char *argv[])
 {
-    int return_val;
-    return_val = contrastAndBrightness();
-    //return_val = show2images();
-    //return_val = to_YUV();
-    //return_val = to_Gray();
-    //return_val = modifyAndSave();
-    return return_val;
+    int val_return;
+
+    //val_return = ex1();
+    //val_return = ex2();
+    //val_return = ex3();
+    //val_return = ex4();
+    //val_return = ex5();
+    //val_return = ex5_2();
+    val_return = ex6();
+    return val_return;
+
 }
 
 

@@ -156,32 +156,39 @@ int contrastAndBrightness(){
 * http://www.swarthmore.edu/NatSci/mzucker1/opencv-2.4.10-docs/doc/tutorials/core/how_to_scan_images/how_to_scan_images.html#howtoscanimagesopencv
 */
 
-//Mat& ScanImageAndReduceIterator(Mat& I, const uchar* const table)
-//{
-//    // accept only char type matrices
-//    CV_Assert(I.depth() != sizeof(uchar));
-//
-//    const int channels = I.channels();
-//    switch(channels)
-//    {
-//    case 1:
-//        {
-//            MatIterator_<uchar> it, end;
-//            for( it = I.begin<uchar>(), end = I.end<uchar>(); it != end; ++it)
-//                *it = table[*it];
-//            break;
-//        }
-//    case 3:
-//        {
-//            MatIterator_<Vec3b> it, end;
-//            for( it = I.begin<Vec3b>(), end = I.end<Vec3b>(); it != end; ++it)
-//            {
-//                (*it)[0] = table[(*it)[0]];
-//                (*it)[1] = table[(*it)[1]];
-//                (*it)[2] = table[(*it)[2]];
-//            }
-//        }
-//    }
-//
-//    return I;
-//}
+int ScanImageAndReduceIterator(){
+
+    double alpha; /**< Simple contrast control */
+    int beta;  /**< Simple brightness control */
+
+    Mat img = imread("../images/lena.jpg", CV_LOAD_IMAGE_COLOR);
+
+    Mat new_image = Mat::zeros( img.size(), img.type() );
+
+    std::cout<<" Basic Linear Transforms "<<std::endl;
+    std::cout<<"-------------------------"<<std::endl;
+    std::cout<<"* Enter the alpha value [1.0-3.0]: ";std::cin>>alpha;
+    std::cout<<"* Enter the beta value [0-100]: "; std::cin>>beta;
+
+    /// Do the operation new_image(i,j) = alpha*image(i,j) + beta
+    for( int y = 0; y < img.rows; y++ ){
+        for( int x = 0; x < img.cols; x++ ){
+            for( int c = 0; c < 3; c++ ){
+                new_image.at<Vec3b>(y,x)[c] = saturate_cast<uchar>( alpha*( img.at<Vec3b>(y,x)[c] ) + beta );
+            }
+        }
+    }
+
+    namedWindow("Original Image", 1);
+    namedWindow("New Image", 1);
+
+    /// Show stuff
+    imshow("Original Image", img);
+    imshow("New Image", new_image);
+
+    waitKey();
+
+}
+
+
+

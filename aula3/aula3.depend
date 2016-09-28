@@ -33,6 +33,19 @@
 
 1474639547 /home/roliveira/Documentos/repGitHub/CV1617/aula3/ex4.h
 
-1474933107 source:/home/roliveira/Documentos/repGitHub/CV1617/aula3/main.cpp
-	"ex4.h"
+1475059483 source:/home/roliveira/Documentos/repGitHub/CV1617/aula3/main.cpp
+	"fileSource.h"
+	<opencv2/core/core.hpp>
+	<opencv2/imgproc/imgproc.hpp>
+	<opencv2/highgui/highgui.hpp>
+	<iostream>
+
+1475059792 source:/home/roliveira/Documentos/repGitHub/CV1617/aula3/fileSource.cpp
+	"fileSource.h"
+	<opencv2/core/core.hpp>
+	<opencv2/imgproc/imgproc.hpp>
+	<opencv2/highgui/highgui.hpp>
+	<iostream>
+
+1475059493 /home/roliveira/Documentos/repGitHub/CV1617/aula3/fileSource.h
 
