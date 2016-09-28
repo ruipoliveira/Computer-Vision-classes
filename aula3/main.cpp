@@ -16,7 +16,8 @@ int main(int argc, char *argv[])
     //val_return = ex4();
     //val_return = ex5();
     //val_return = ex5_2();
-    val_return = ex6();
+    //val_return = ex6();
+    val_return = ex7();
     return val_return;
 
 }
