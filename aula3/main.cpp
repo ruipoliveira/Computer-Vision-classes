@@ -10,8 +10,8 @@ using std::cout;
 int main(int argc, char *argv[])
 {
     int val_return;
-    val_return = ex1();
-    //val_return = ex2();
+    //val_return = ex1();
+    val_return = ex2();
     //val_return = ex3();
     //val_return = ex4();
     //val_return = ex5();

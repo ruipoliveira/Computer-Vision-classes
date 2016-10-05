@@ -54,32 +54,40 @@ int ex1(){
 
 int ex2(){
 
-
     VideoCapture cap(0); // open the default camera
     if(!cap.isOpened())  // check if we succeeded
         return -1;
 
-    Mat edges;
-    namedWindow("edges",1);
+    cout<< " 0: Binary\n 1: Binary Inverted\n 2: Threshold Truncated\n 3: Threshold to Zero\n 4: Threshold to Zero Inverted "<< endl;
+    cout<< "q - exit" << endl;
+
+    Mat frameResult;
+    int type_bin;
+
+
     for(;;)
     {
         Mat frame;
         cap >> frame; // get a new frame from camera
 
-        cvtColor(frame, edges, CV_BGR2GRAY);
+        cvtColor(frame, frameResult, CV_BGR2GRAY);
 
-        /* 0: Binary
-        1: Binary Inverted
-        2: Threshold Truncated
-        3: Threshold to Zero
-        4: Threshold to Zero Inverted
-        */
+        threshold( frameResult, frameResult, 100, 255,type_bin);
 
-        threshold( edges, edges, 100, 255,4);
+        imshow("frameResult", frameResult);
 
+        int key = waitKey(10);
 
-        imshow("edges", edges);
-        if(waitKey(30) >= 0) break;
+        switch((char)key){
+            case '0' : type_bin=0; break;
+            case '1' : type_bin=1; break;
+            case '2' : type_bin=2; break;
+            case '3' : type_bin=3; break;
+            case '4' : type_bin=4; break;
+        }
+
+        if((char)key == 'q') { break; }
+
     }
     return 0;
 
