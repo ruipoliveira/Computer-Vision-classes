@@ -5,27 +5,46 @@
 #include <iostream>
 
 using namespace cv;
-
+using namespace std;
 
 
 int ex1(){
 
 
+    double maxValue, valueC;
+    int thresholdType, adaptiveMethod, blockSize;
+
     VideoCapture cap(0); // open the default camera
     if(!cap.isOpened())  // check if we succeeded
         return -1;
 
-    Mat edges;
-    namedWindow("edges",1);
+    cout<< "MaxValue(!=0) : "<< endl;
+    cin>>maxValue;
+
+    cout<< "ThresholdType(ADAPTIVE_THRESH_MEAN_C = 0 , ADAPTIVE_THRESH_GAUSSIAN_C = 1)" << endl;
+    cin>>thresholdType;
+
+    cout<< "AdaptiveMethod (THRESH_BINARY = 0 , THRESH_BINARY_INV = 1) "<< endl;
+    cin>>adaptiveMethod;
+
+    cout<< " BlockSize (3, 5, 7, and so on)"<< endl;
+    cin>>blockSize;
+
+    cout<< " C (Normally, it is positive)"<< endl;
+    cin>>valueC;
+
+    Mat frameThreshold, frameGray;
+
     for(;;)
     {
         Mat frame;
         cap >> frame; // get a new frame from camera
 
-        cvtColor(frame, edges, CV_BGR2GRAY);
-        adaptiveThreshold( edges, edges, 255,CV_ADAPTIVE_THRESH_GAUSSIAN_C,CV_THRESH_BINARY,3, 1 );
+        cvtColor(frame, frameGray, CV_BGR2GRAY);
+        adaptiveThreshold( frameGray, frameThreshold, maxValue ,thresholdType,adaptiveMethod,blockSize, valueC );
 
-        imshow("edges", edges);
+        imshow("frameGray", frameGray);
+        imshow("frameThreshold", frameThreshold);
         if(waitKey(30) >= 0) break;
     }
     return 0;
