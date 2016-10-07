@@ -126,20 +126,19 @@ int ex4(){
     if(!cap.isOpened())  // check if we succeeded
         return -1;
 
-    Mat edges;
-    namedWindow("edges",1);
+    Mat frameResult;
     for(;;)
     {
         Mat frame;
         cap >> frame; // get a new frame from camera
 
-        //medianBlur ( frame, edges, 15 );
-        blur( frame, edges, Size( 10, 10 ), Point(-1,-1) );
 
+        //medianBlur ( frame, frameResult, 15 );
+        blur( frame, frameResult, Size( 10, 10 ), Point(-1,-1) );
 
-        //gaussianBlur( frame, edges, 15 );
+        //  gaussianBlur( frame, frameResult, 15 );
 
-        imshow("edges", edges);
+        imshow("frameResult", frameResult);
         if(waitKey(30) >= 0) break;
     }
     return 0;
@@ -213,7 +212,7 @@ int ex5(){
         imshow("calcHist Demo", histImage );
 
 
-        imshow("edges", src);
+        imshow("Source", src);
         if(waitKey(30) >= 0) break;
     }
     return 0;
