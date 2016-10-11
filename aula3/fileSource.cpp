@@ -7,6 +7,9 @@
 using namespace cv;
 using namespace std;
 
+int findBiggestContour(vector<vector<Point> >);
+
+
 
 int ex1(){
 
@@ -101,22 +104,53 @@ int ex3(){
     if(!cap.isOpened())  // check if we succeeded
         return -1;
 
-    Mat edges;
-    namedWindow("edges",1);
+    Mat frameResult;
     for(;;)
     {
         Mat frame;
         cap >> frame; // get a new frame from camera
 
-        cvtColor(frame, edges, CV_BGR2GRAY);
+        blur( frame, frame, Size(3,3) );
 
-        threshold( edges, edges, 100, 255,4);
+        Mat hsv;
+        cvtColor(frame, hsv, CV_BGR2HSV);
 
-        imshow("edges", edges);
+        Mat bw;
+        inRange(hsv, Scalar(0, 10, 60), Scalar(20, 150, 255), bw);
+        imshow("src", frame);
+        imshow("dst", bw);
+
+        Mat canny_output;
+        vector<vector<Point> > contours;
+        vector<Vec4i> hierarchy;
+
+        findContours( bw, contours, hierarchy, CV_RETR_TREE, CV_CHAIN_APPROX_SIMPLE, Point(0, 0) );
+        int s = findBiggestContour(contours);
+
+        Mat drawing = Mat::zeros( frame.size(), CV_8UC1 );
+        drawContours( drawing, contours, s, Scalar(255), -1, 8, hierarchy, 0, Point() );
+
+        imshow("drw", drawing);
+
         if(waitKey(30) >= 0) break;
+
     }
     return 0;
 
+
+
+}
+
+int findBiggestContour(vector<vector<Point> > contours){
+    int indexOfBiggestContour = -1;
+    int sizeOfBiggestContour = 0;
+    for (int i = 0; i < contours.size(); i++){
+        if(contours[i].size() > sizeOfBiggestContour){
+            sizeOfBiggestContour = contours[i].size();
+            indexOfBiggestContour = i;
+        }
+    }
+    return indexOfBiggestContour;
 }
 
 
@@ -132,10 +166,8 @@ int ex4(){
         Mat frame;
         cap >> frame; // get a new frame from camera
 
-
         //medianBlur ( frame, frameResult, 15 );
         blur( frame, frameResult, Size( 10, 10 ), Point(-1,-1) );
-
         //  gaussianBlur( frame, frameResult, 15 );
 
         imshow("frameResult", frameResult);
@@ -220,9 +252,6 @@ int ex5(){
 }
 
 
-int ex5_2(){
-}
-
 
 int ex6(){
 
@@ -230,32 +259,31 @@ int ex6(){
     if(!cap.isOpened())  // check if we succeeded
         return -1;
 
-    Mat edges, dst;
+    Mat dst;
     namedWindow("edges",1);
     for(;;)
     {
         Mat src;
-        cap >> src; // get a new frame from camera
+        cap >> src;
+
+        char* source_window = "Source image";
+        char* equalized_window = "Equalized Image";
 
 
-char* source_window = "Source image";
-  char* equalized_window = "Equalized Image";
-/// Apply Histogram Equalization
+        if( !src.data ){
+            return -1;
+        }
 
+        cvtColor(src, src, CV_BGR2GRAY);
 
-        if( !src.data )
-        { return -1; }
+        equalizeHist( src, dst );
 
-    cvtColor(src, src, CV_BGR2GRAY);
+        /// Display results
+        namedWindow( source_window, CV_WINDOW_AUTOSIZE );
+        namedWindow( equalized_window, CV_WINDOW_AUTOSIZE );
 
-  equalizeHist( src, dst );
-
-  /// Display results
-  namedWindow( source_window, CV_WINDOW_AUTOSIZE );
-  namedWindow( equalized_window, CV_WINDOW_AUTOSIZE );
-
-  imshow( source_window, src );
-  imshow( equalized_window, dst );
+        imshow( source_window, src );
+        imshow( equalized_window, dst );
 
 
 
@@ -311,8 +339,7 @@ int ex7(){
         normalize(r_hist, r_hist, 0, histImage.rows, NORM_MINMAX, -1, Mat() );
 
         /// Draw for each channel
-        for( int i = 1; i < histSize; i++ )
-        {
+        for( int i = 1; i < histSize; i++ ){
         line( histImage, Point( bin_w*(i-1), hist_h - cvRound(b_hist.at<float>(i-1)) ) ,
                    Point( bin_w*(i), hist_h - cvRound(b_hist.at<float>(i)) ),
                    Scalar( 255, 0, 0), 2, 8, 0  );
@@ -357,8 +384,7 @@ int ex7(){
         normalize(r_hist2, r_hist2, 0, histImage2.rows, NORM_MINMAX, -1, Mat() );
 
         /// Draw for each channel
-        for( int i = 1; i < histSize; i++ )
-        {
+        for( int i = 1; i < histSize; i++ ){
         line( histImage2, Point( bin_w*(i-1), hist_h - cvRound(b_hist.at<float>(i-1)) ) ,
                    Point( bin_w*(i), hist_h - cvRound(b_hist.at<float>(i)) ),
                    Scalar( 255, 0, 0), 2, 8, 0  );

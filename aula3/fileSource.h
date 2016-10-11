@@ -6,4 +6,3 @@ int ex5();
 int ex5_2();
 int ex6();
 int ex7();
-
