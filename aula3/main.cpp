@@ -25,7 +25,6 @@ int main(int argc, char *argv[]){
         cout << "  Exercicio 5\n";
         cout << "  Exercicio 6\n";
         cout << "  Exercicio 7\n";
-
         cout << "  8.  Exit\n";
         cout << "  ====================================\n";
         cout << "  Enter your selection: ";
