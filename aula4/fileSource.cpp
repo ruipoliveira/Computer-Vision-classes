@@ -7,6 +7,7 @@
 using namespace cv;
 using namespace std;
 
+void CannyThreshold(int, void*);
 
 int ex1(){
 
@@ -18,33 +19,49 @@ int ex1(){
     if(!cap.isOpened())  // check if we succeeded
         return -1;
 
-    cout<< "MaxValue(!=0) : "<< endl;
-    cin>>maxValue;
+    Mat src, src_gray;
+  Mat grad;
+  char* window_name = "Sobel Demo - Simple Edge Detector";
+  int scale = 1;
+  int delta = 0;
+  int ddepth = CV_16S;
 
-    cout<< "ThresholdType(ADAPTIVE_THRESH_MEAN_C = 0 , ADAPTIVE_THRESH_GAUSSIAN_C = 1)" << endl;
-    cin>>thresholdType;
-
-    cout<< "AdaptiveMethod (THRESH_BINARY = 0 , THRESH_BINARY_INV = 1) "<< endl;
-    cin>>adaptiveMethod;
-
-    cout<< " BlockSize (3, 5, 7, and so on)"<< endl;
-    cin>>blockSize;
-
-    cout<< " C (Normally, it is positive)"<< endl;
-    cin>>valueC;
 
     Mat frameThreshold, frameGray;
 
     for(;;)
     {
-        Mat frame;
-        cap >> frame; // get a new frame from camera
+        Mat src;
+        cap >> src; // get a new frame from camera
 
-        cvtColor(frame, frameGray, CV_BGR2GRAY);
-        adaptiveThreshold( frameGray, frameThreshold, maxValue ,thresholdType,adaptiveMethod,blockSize, valueC );
+        GaussianBlur( src, src, Size(3,3), 0, 0, BORDER_DEFAULT );
 
-        imshow("frameGray", frameGray);
-        imshow("frameThreshold", frameThreshold);
+        /// Convert it to gray
+        cvtColor( src, src_gray, CV_BGR2GRAY );
+
+        /// Create window
+        namedWindow( window_name, CV_WINDOW_AUTOSIZE );
+
+        /// Generate grad_x and grad_y
+        Mat grad_x, grad_y;
+        Mat abs_grad_x, abs_grad_y;
+
+        /// Gradient X
+        //Scharr( src_gray, grad_x, ddepth, 1, 0, scale, delta, BORDER_DEFAULT );
+        Sobel( src_gray, grad_x, ddepth, 1, 0, 3, scale, delta, BORDER_DEFAULT );
+        convertScaleAbs( grad_x, abs_grad_x );
+
+        /// Gradient Y
+        //Scharr( src_gray, grad_y, ddepth, 0, 1, scale, delta, BORDER_DEFAULT );
+        Sobel( src_gray, grad_y, ddepth, 0, 1, 3, scale, delta, BORDER_DEFAULT );
+        convertScaleAbs( grad_y, abs_grad_y );
+
+        /// Total Gradient (approximate)
+        addWeighted( abs_grad_x, 0.5, abs_grad_y, 0.5, 0, grad );
+
+        imshow( window_name, grad );
+
+
         if(waitKey(30) >= 0) break;
     }
     return 0;
@@ -54,40 +71,58 @@ int ex1(){
 
 int ex2(){
 
+    int kernel_size = 3;
+    int scale = 1;
+    int delta = 0;
+    int ddepth = CV_16S;
 
     VideoCapture cap(0); // open the default camera
     if(!cap.isOpened())  // check if we succeeded
         return -1;
 
-    Mat edges;
-    namedWindow("edges",1);
-    for(;;)
-    {
+    Mat src_gray, dst;
+
+    for(;;) {
         Mat frame;
         cap >> frame; // get a new frame from camera
 
-        cvtColor(frame, edges, CV_BGR2GRAY);
+        GaussianBlur( frame, frame, Size(3,3), 0, 0, BORDER_DEFAULT );
 
-        /* 0: Binary
-        1: Binary Inverted
-        2: Threshold Truncated
-        3: Threshold to Zero
-        4: Threshold to Zero Inverted
-        */
+        /// Convert the image to grayscale
+        cvtColor( frame, src_gray, CV_BGR2GRAY );
 
-        threshold( edges, edges, 100, 255,4);
+        /// Apply Laplace function
+        Mat abs_dst;
 
+        Laplacian( src_gray, dst, ddepth, kernel_size, scale, delta, BORDER_DEFAULT );
+        convertScaleAbs( dst, abs_dst );
 
-        imshow("edges", edges);
+        imshow( "Apply Laplace function", abs_dst );
+
         if(waitKey(30) >= 0) break;
     }
+
     return 0;
 
 }
 
 
 
+
+
+
 int ex3(){
+
+    Mat src, src_gray;
+    Mat dst, detected_edges;
+
+    int edgeThresh = 1;
+    int lowThreshold;
+    int const max_lowThreshold = 100;
+    int ratio = 3;
+    int kernel_size = 3;
+    char* window_name = "Edge Map";
+
 
     VideoCapture cap(0); // open the default camera
     if(!cap.isOpened())  // check if we succeeded
@@ -100,11 +135,32 @@ int ex3(){
         Mat frame;
         cap >> frame; // get a new frame from camera
 
-        cvtColor(frame, edges, CV_BGR2GRAY);
+        frame.create( frame.size(), frame.type() );
 
-        threshold( edges, edges, 100, 255,4);
+        /// Convert the image to grayscale
+        cvtColor( frame, src_gray, CV_BGR2GRAY );
 
-        imshow("edges", edges);
+        /// Create a window
+        namedWindow( window_name, CV_WINDOW_AUTOSIZE );
+
+        /// Create a Trackbar for user to enter threshold
+
+        createTrackbar( "Min Threshold:", window_name, &lowThreshold, max_lowThreshold, CannyThreshold );
+
+        /// Show the image
+  blur( src_gray, detected_edges, Size(3,3) );
+
+  /// Canny detector
+  Canny( detected_edges, detected_edges, lowThreshold, lowThreshold*ratio, kernel_size );
+
+  /// Using Canny's output as a mask, we display our result
+  dst = Scalar::all(0);
+
+  src.copyTo( dst, detected_edges);
+  imshow( window_name, dst );
+
+
+
         if(waitKey(30) >= 0) break;
     }
     return 0;
