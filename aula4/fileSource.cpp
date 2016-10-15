@@ -120,6 +120,11 @@ int ex3(){
     if(!cap.isOpened())  // check if we succeeded
         return -1;
 
+    cout<< " 0: Valor de ratio Threshold:" << endl;
+    cout<< "q - exit" << endl;
+
+
+
     Mat edges;
     namedWindow("edges",1);
     for(;;)
@@ -127,10 +132,27 @@ int ex3(){
         Mat frame;
         cap >> frame; // get a new frame from camera
 
+
+
+        int ratiothresh = 30;
+        int key = waitKey(10);
+
+
+
         cvtColor(frame, edges, CV_BGR2GRAY);
         GaussianBlur(edges, edges, Size(7,7), 1.5, 1.5);
-        Canny(edges, edges, 0, 60, 3);
+        Canny(edges, edges, 0, ratiothresh, 3);
         imshow("edges", edges);
+
+        switch((char)key){
+            case '10' : ratiothresh = 10; break;
+            case '20' : ratiothresh = 20; break;
+            case '30' : ratiothresh = 30; break;
+            case '40' : ratiothresh = 40; break;
+            case '50' : ratiothresh = 50; break;
+        }
+
+        if((char)key == 'q') { break; }
 
         if(waitKey(30) >= 0) break;
     }
@@ -143,7 +165,7 @@ int ex3(){
 */
 int ex4(){
 
-    int thresh = 254;
+    int thresh = 240;
     Mat dst, dst_norm, dst_norm_scaled;
 
     /// Detector parameters
