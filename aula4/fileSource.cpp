@@ -261,8 +261,8 @@ int ex5(){
     }
 
 
-namedWindow( "Orignal #5", CV_WINDOW_AUTOSIZE );
-namedWindow( "Result #5", CV_WINDOW_AUTOSIZE );
+    namedWindow( "Orignal #5", CV_WINDOW_AUTOSIZE );
+    namedWindow( "Result #5", CV_WINDOW_AUTOSIZE );
 
     imshow("Orignal #5", frame);
     imshow("Result #5", drawing);
