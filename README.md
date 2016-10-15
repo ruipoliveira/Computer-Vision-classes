@@ -29,4 +29,4 @@
 ### Authors
 
 * Rui Oliveira (ruipedrooliveira@ua.pt)
-* Tomás Rodrigues (xxxx@ua.pt)
+* Tomás Rodrigues (tomasrodrigues@ua.pt)
