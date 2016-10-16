@@ -137,13 +137,6 @@ int ex3(){
         int ratiothresh = 30;
         int key = waitKey(10);
 
-
-
-        cvtColor(frame, edges, CV_BGR2GRAY);
-        GaussianBlur(edges, edges, Size(7,7), 1.5, 1.5);
-        Canny(edges, edges, 0, ratiothresh, 3);
-        imshow("edges", edges);
-
         switch((char)key){
             case '10' : ratiothresh = 10; break;
             case '20' : ratiothresh = 20; break;
@@ -153,6 +146,13 @@ int ex3(){
         }
 
         if((char)key == 'q') { break; }
+
+        cvtColor(frame, edges, CV_BGR2GRAY);
+        GaussianBlur(edges, edges, Size(7,7), 1.5, 1.5);
+        Canny(edges, edges, 0, ratiothresh, 3);
+        imshow("edges", edges);
+
+
 
         if(waitKey(30) >= 0) break;
     }
