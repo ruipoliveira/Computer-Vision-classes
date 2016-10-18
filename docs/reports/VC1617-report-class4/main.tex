@@ -172,7 +172,7 @@ results.}
 
 \subsubsection{Resolução e principais conclusões}
 
-No problema 3 aplicamos o algoritmo de Canny diretamente e tal como nos foi dito na aula teórica, depois de ajusta-dos os parâmetros conseguimos delinear as arestas mais importantes da imagem. Por exemplo, a imagem abaixo observamos facilmente que deteta com precisam muito mais arestas que a de cima, apenas mudando aqui o ratio* e o threshold.
+No problema 3 aplicámos o algoritmo de Canny diretamente e tal como nos foi dito na aula teórica, depois de ajustados os parâmetros conseguimos delinear as arestas mais importantes da imagem. Por exemplo, a imagem abaixo observámos facilmente que deteta com precisão muito mais arestas que a de cima, apenas alterando dois parametros \texttt{ratio} e o \texttt{threshold}.
 
 
 \begin{figure}[ht!]
@@ -201,7 +201,7 @@ detected, draw a circle or a square in the image (explore the drawing functions 
 
 \subsubsection{Resolução e principais conclusões}
 
-No problema 4 detetamos os cantos diretamente com o algoritmo de Harris falado na aula. Pensamos não ter conseguido uma boa solução mesmo quando tentamos ajustar alguns parâmetros como o blocksize e o tamanho da aperture, mas na imagem do tutorial seguido por nós os resultados pareciam a não detetar todos os cantos também. Daí concluímos que a deteção de cantos é muito mais difícil que a deteção de arestas para ser executado com uma precisão elevada.
+No problema 4 detetámos os cantos diretamente com o algoritmo de Harris abordado na aula. Pensámos não ter conseguido uma boa solução mesmo quando tentamos ajustar alguns parâmetros como o \texttt{blocksize} e o tamanho da \texttt{aperture}, mas na imagem do tutorial seguida por nós os resultados pareciam a não detetar todos os cantos também. Concluímos portanto, que a deteção de cantos é muito mais difícil que a deteção de arestas para ser executado com uma precisão elevada.
 
 \begin{figure}[ht!]
 \centering
@@ -215,9 +215,7 @@ No problema 4 detetamos os cantos diretamente com o algoritmo de Harris falado n
 \subsection{Problema \#5}
 
 \subsubsection{Enunciado}
-\textit{Implement a program to detect lines and circles on an image. As suggestion, start by calculat-
-ing a binary image with the edges present on the scene. Adjust the parameters to get the best
-edges as possible. Then explore the use of the function findContours to identify the contours
+\textit{Implement a program to detect lines and circles on an image. As suggestion, start by calculating a binary image with the edges present on the scene. Adjust the parameters to get the best edges as possible. Then explore the use of the function findContours to identify the contours
 corresponding to the objects of interest.}
 
 \subsubsection{Resolução e principais conclusões}
