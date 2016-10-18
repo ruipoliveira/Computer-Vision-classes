@@ -1,0 +1,27 @@
+
+
+1476542886 /home/tomas/Dropbox/UNIVERSIDADE/5Ano/VC/CV1617-68779-68129/aula4/fileSource.h
+
+1476544653 source:/home/tomas/Dropbox/UNIVERSIDADE/5Ano/VC/CV1617-68779-68129/aula4/fileSource.cpp
+	"fileSource.h"
+	<opencv2/core/core.hpp>
+	<opencv2/imgproc/imgproc.hpp>
+	<opencv2/highgui/highgui.hpp>
+	<iostream>
+
+1476648635 source:/home/roliveira/Documentos/repGitHub/CV1617/aula5/fileSource.cpp
+	"fileSource.h"
+	<opencv2/core/core.hpp>
+	<opencv2/imgproc/imgproc.hpp>
+	<opencv2/highgui/highgui.hpp>
+	<iostream>
+
+1476487826 /home/roliveira/Documentos/repGitHub/CV1617/aula5/fileSource.h
+
+1476648635 source:/home/roliveira/Documentos/repGitHub/CV1617/aula5/main.cpp
+	"fileSource.h"
+	<opencv2/core/core.hpp>
+	<opencv2/imgproc/imgproc.hpp>
+	<opencv2/highgui/highgui.hpp>
+	<iostream>
+
