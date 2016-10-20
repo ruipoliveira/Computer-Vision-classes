@@ -9,8 +9,3 @@ using namespace std;
 
 
 
-int ex1(){
-
-}
-
-
