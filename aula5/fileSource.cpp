@@ -403,20 +403,11 @@ int ex4(){
     int board_w = 9;
     int board_h = 6;
 
-    int sucesses;
+    int board_size = board_w * board_h;
     CvSize board_sz = cvSize(board_w,board_h);
 
-    int x = board_w * board_h;
-
-
-    std::vector<std::vector<cv::Point3f> > object_points;
-    std::vector<std::vector<cv::Point2f> > image_points;
-
-    std::vector<cv::Mat> rvecs;
-    std::vector<cv::Mat> tvecs;
-
-    cv::Mat intrinsic = cv::Mat(3, 3, CV_32FC1);
-    cv::Mat distCoeffs;
+    cv::Mat rvec(3,1,cv::DataType<double>::type);
+    cv::Mat tvec(3,1,cv::DataType<double>::type);
 
     Mat image;
     VideoCapture capture(0);
@@ -425,57 +416,57 @@ int ex4(){
         cout<<"Failed to open camera";
     }
 
-    std::vector<cv::Point2f> corners;
-    cv::FileStorage fs("../CamParams.xml", cv::FileStorage::WRITE);
-    fs << "cameraMatrix" << intrinsic << "distCoeffs" << distCoeffs;
-    fs.release();
-    int corner_count;
+    // load Matrixes
+    cv::Mat intrinsic;
+    cv::Mat distCoeffs;
+    cv::FileStorage fs("../CamParams.xml", cv::FileStorage::READ);
+    if (!fs.isOpened()){
+        std::cerr << "Failed to open " << std::endl;
+        return 1;
+    }
 
-/*
-    std::vector<cv::Point3f> obj;
-    for(int j=0;j<x;j++)
-    obj.push_back(cv::Point3f(float(j/x), float(j%x), 0.0));
-*/
+    fs["cameraMatrix"] >> intrinsic;
+    fs["distCoeffs"] >> distCoeffs;
+    fs.release();
+
+
+    std::vector<cv::Point3f> objectPoints;
+
+    for (int i = 0; i < board_h; i++)
+        for (int j = 0; j < board_w; j++)
+          objectPoints.push_back(cv::Point3f((float)j,(float)i, 0.0));
+
+    std::vector<Point3f> cubePoints;
+    cubePoints.push_back(Point3f(0.0, 0.0, 0.0)); // vertice0
+    cubePoints.push_back(Point3f(0.0, 0.0, 1.0)); // vertice1
+    cubePoints.push_back(Point3f(1.0, 0.0, 0.0)); // vertice2
+    cubePoints.push_back(Point3f(1.0, 0.0, 1.0)); // vertice3
+    cubePoints.push_back(Point3f(0.0, 1.0, 0.0)); // vertice4
+    cubePoints.push_back(Point3f(0.0, 1.0, 1.0)); // vertice5
+    cubePoints.push_back(Point3f(1.0, 1.0, 0.0)); // vertice6
+    cubePoints.push_back(Point3f(1.0, 1.0, 1.0)); // vertice7
+
+    cv::Mat grey_image;
+
 
     while ( true ){
         capture >> image;
 
+        cvtColor(image,grey_image,CV_BGR2GRAY);
 
-        cvtColor(image,image,CV_BGR2GRAY);
+        std::vector<cv::Point2f> corners;
 
-        findChessboardCorners(image, board_sz, corners,0);
+        bool found = cv::findChessboardCorners(grey_image, board_sz, corners, 0);
+
 
         std::cout << std::endl << "Intrinsics = "<< std::endl << " " << corners << std::endl << std::endl;
 
-        int corner_count1 = corners.size() ;
 
-/*
-        if (corner_count1== board_w * board_h){
-            image_points.push_back(corners);
-            //object_points.push_back(obj);
-            sucesses++;
-        }
-*/
-
-        //cv::solvePnP(image_points, corners, intrinsic, distCoeffs, rvecs, rvecs, false);
-
-/*
-
-        std::vector<Point3f> cubePoints;
-        cubePoints.push_back(Point3f(0.0, 0.0, 0.0)); // vertice0
-        cubePoints.push_back(Point3f(0.0, 0.0, 1.0)); // vertice1
-        cubePoints.push_back(Point3f(1.0, 0.0, 0.0)); // vertice2
-        cubePoints.push_back(Point3f(1.0, 0.0, 1.0)); // vertice3
-        cubePoints.push_back(Point3f(0.0, 1.0, 0.0)); // vertice4
-        cubePoints.push_back(Point3f(0.0, 1.0, 1.0)); // vertice5
-        cubePoints.push_back(Point3f(1.0, 1.0, 0.0)); // vertice6
-        cubePoints.push_back(Point3f(1.0, 1.0, 1.0)); // vertice7
-
-
+        cv::solvePnP(objectPoints, corners, intrinsic, distCoeffs, rvec, tvec, false);
         std::vector<cv::Point2f> projected_points;
-        cv::projectPoints(cubePoints, rvecs, tvecs, intrinsic, distCoeffs, projected_points);
+        cv::projectPoints(cubePoints, rvec, tvec, intrinsic, distCoeffs, projected_points);
 
-        //desenhar cubo 0,255,255 cor amarela
+
         line(image, projected_points[0], projected_points[1], Scalar(0, 255, 255), 2, 8);
         line(image, projected_points[0], projected_points[2], Scalar(0, 255, 255), 2, 8);
         line(image, projected_points[0], projected_points[4], Scalar(0, 255, 255), 2, 8);
@@ -490,9 +481,7 @@ int ex4(){
         line(image, projected_points[6], projected_points[7], Scalar(0, 255, 255), 2, 8);
 
 
-*/
-        imshow("Calibration", image);
-
+        imshow("Calibration", grey_image);
 
         if(waitKey(30) >= 0) break;
     }
@@ -500,4 +489,12 @@ int ex4(){
     return 0;
 
 }
+
+
+
+
+
+
+
+
 
