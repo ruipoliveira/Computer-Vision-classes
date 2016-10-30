@@ -399,94 +399,91 @@ int ex3(){
 
 int ex4(){
 
-    int n_boards = 14; //Number of images
+    cv::FileStorage fs("../CamParams.xml", cv::FileStorage::READ);
+    cv::Mat intrinsic = cv::Mat(3, 3, CV_32FC1);
+    cv::Mat distCoeffs;
+    fs["cameraMatrix"] >> intrinsic;
+    fs["distCoeffs"] >> distCoeffs;
+    // ChessBoard Properties
     int board_w = 9;
     int board_h = 6;
+
+    std::vector<cv::Point3f> objectPoints, cubePoints;
+    cubePoints.push_back(cv::Point3f(0.0, 0.0, 0.0));
+    cubePoints.push_back(cv::Point3f(0.0, 1.0, 0.0));
+    cubePoints.push_back(cv::Point3f(1.0, 0.0, 0.0));
+    cubePoints.push_back(cv::Point3f(1.0, 1.0, 0.0));
+    cubePoints.push_back(cv::Point3f(0.0, 0.0, -1.0));
+    cubePoints.push_back(cv::Point3f(0.0, 1.0, -1.0));
+    cubePoints.push_back(cv::Point3f(1.0, 0.0, -1.0));
+    cubePoints.push_back(cv::Point3f(1.0, 1.0, -1.0));
+
+    for (int i = 0; i < board_h; i++)
+    for (int j = 0; j < board_w; j++)
+    objectPoints.push_back(cv::Point3f((float)j,(float)i, 0.0));
+
+    cv::Mat image;
+    int i = 0;
+
+    int sucesses = 0;
+
+    cv::VideoCapture cap(0);
+    if (!cap.isOpened()){
+        std::cout << "Cannot open the video file" << std::endl;
+        getchar();
+        return -1;
+    }
+
+    while (true){
+        cap >> image; // get a new frame from camera
+        desenharCubo(&image, board_w, board_h,  &intrinsic, &distCoeffs, &cubePoints, &objectPoints);
+        imshow("cam", image);
+
+        if(cv::waitKey(30) >= 0) break;
+    }
+
+
+}
+
+
+void desenharCubo(cv::Mat *image, int board_w,int board_h, cv::Mat *intrinsic, cv::Mat *distCoeffs,
+                    std::vector<cv::Point3f> *cubePoints,std::vector<cv::Point3f> *objectPoints){
 
     int board_size = board_w * board_h;
     CvSize board_sz = cvSize(board_w,board_h);
 
+    cv::Mat grey_image;
+
+    cv::cvtColor(*image, grey_image, CV_BGR2GRAY);
+
     cv::Mat rvec(3,1,cv::DataType<double>::type);
     cv::Mat tvec(3,1,cv::DataType<double>::type);
 
-    Mat image;
-    VideoCapture capture(0);
+    std::vector<cv::Point2f> corners;
 
-    if ( capture.isOpened() == false ) {
-        cout<<"Failed to open camera";
-    }
+    bool found = cv::findChessboardCorners(grey_image, board_sz, corners, 0);
+    if (!found)
+    return;
 
-    // load Matrixes
-    cv::Mat intrinsic;
-    cv::Mat distCoeffs;
-    cv::FileStorage fs("../CamParams.xml", cv::FileStorage::READ);
-    if (!fs.isOpened()){
-        std::cerr << "Failed to open " << std::endl;
-        return 1;
-    }
+    cv::solvePnP(*objectPoints, corners, *intrinsic, *distCoeffs, rvec, tvec, false);
+    std::vector<cv::Point2f> imagePoints;
+    cv::projectPoints(*cubePoints, rvec, tvec, *intrinsic, *distCoeffs, imagePoints);
 
-    fs["cameraMatrix"] >> intrinsic;
-    fs["distCoeffs"] >> distCoeffs;
-    fs.release();
+    // Draw results
+    line(*image, imagePoints[0], imagePoints[1], cv::Scalar( 0, 255, 0 ), 2);
+    line(*image, imagePoints[0], imagePoints[2], cv::Scalar( 0, 255, 0 ), 2);
+    line(*image, imagePoints[1], imagePoints[3], cv::Scalar( 0, 255, 0 ), 2);
+    line(*image, imagePoints[2], imagePoints[3], cv::Scalar( 0, 255, 0 ), 2);
 
+    line(*image, imagePoints[4], imagePoints[5], cv::Scalar( 0, 255, 0 ), 2);
+    line(*image, imagePoints[4], imagePoints[6], cv::Scalar( 0, 255, 0 ), 2);
+    line(*image, imagePoints[5], imagePoints[7], cv::Scalar( 0, 255, 0 ), 2);
+    line(*image, imagePoints[6], imagePoints[7], cv::Scalar( 0, 255, 0 ), 2);
 
-    std::vector<cv::Point3f> objectPoints;
-
-    for (int i = 0; i < board_h; i++)
-        for (int j = 0; j < board_w; j++)
-          objectPoints.push_back(cv::Point3f((float)j,(float)i, 0.0));
-
-    std::vector<Point3f> cubePoints;
-    cubePoints.push_back(Point3f(0.0, 0.0, 0.0)); // vertice0
-    cubePoints.push_back(Point3f(0.0, 0.0, 1.0)); // vertice1
-    cubePoints.push_back(Point3f(1.0, 0.0, 0.0)); // vertice2
-    cubePoints.push_back(Point3f(1.0, 0.0, 1.0)); // vertice3
-    cubePoints.push_back(Point3f(0.0, 1.0, 0.0)); // vertice4
-    cubePoints.push_back(Point3f(0.0, 1.0, 1.0)); // vertice5
-    cubePoints.push_back(Point3f(1.0, 1.0, 0.0)); // vertice6
-    cubePoints.push_back(Point3f(1.0, 1.0, 1.0)); // vertice7
-
-    cv::Mat grey_image;
-
-
-    while ( true ){
-        capture >> image;
-
-        cvtColor(image,grey_image,CV_BGR2GRAY);
-
-        std::vector<cv::Point2f> corners;
-
-        bool found = cv::findChessboardCorners(grey_image, board_sz, corners, 0);
-
-
-        std::cout << std::endl << "Intrinsics = "<< std::endl << " " << corners << std::endl << std::endl;
-
-
-        cv::solvePnP(objectPoints, corners, intrinsic, distCoeffs, rvec, tvec, false);
-        std::vector<cv::Point2f> projected_points;
-        cv::projectPoints(cubePoints, rvec, tvec, intrinsic, distCoeffs, projected_points);
-
-
-        line(image, projected_points[0], projected_points[1], Scalar(0, 255, 255), 2, 8);
-        line(image, projected_points[0], projected_points[2], Scalar(0, 255, 255), 2, 8);
-        line(image, projected_points[0], projected_points[4], Scalar(0, 255, 255), 2, 8);
-        line(image, projected_points[1], projected_points[3], Scalar(0, 255, 255), 2, 8);
-        line(image, projected_points[1], projected_points[5], Scalar(0, 255, 255), 2, 8);
-        line(image, projected_points[2], projected_points[3], Scalar(0, 255, 255), 2, 8);
-        line(image, projected_points[2], projected_points[6], Scalar(0, 255, 255), 2, 8);
-        line(image, projected_points[3], projected_points[7], Scalar(0, 255, 255), 2, 8);
-        line(image, projected_points[4], projected_points[5], Scalar(0, 255, 255), 2, 8);
-        line(image, projected_points[4], projected_points[6], Scalar(0, 255, 255), 2, 8);
-        line(image, projected_points[5], projected_points[7], Scalar(0, 255, 255), 2, 8);
-        line(image, projected_points[6], projected_points[7], Scalar(0, 255, 255), 2, 8);
-
-
-        imshow("Calibration", grey_image);
-
-        if(waitKey(30) >= 0) break;
-    }
-
-    return 0;
+    line(*image, imagePoints[0], imagePoints[4], cv::Scalar( 0, 255, 0 ), 2);
+    line(*image, imagePoints[1], imagePoints[5], cv::Scalar( 0, 255, 0 ), 2);
+    line(*image, imagePoints[2], imagePoints[6], cv::Scalar( 0, 255, 0 ), 2);
+    line(*image, imagePoints[3], imagePoints[7], cv::Scalar( 0, 255, 0 ), 2);
 
 }
 
