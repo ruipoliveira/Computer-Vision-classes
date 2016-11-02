@@ -32,15 +32,9 @@
 		<Linker>
 			<Add option="`opencv-config --ldstaticflags`" />
 		</Linker>
-		<Unit filename="SimpleFreenect.cpp" />
-		<Unit filename="SimpleFreenect.hpp" />
 		<Unit filename="fileSource.cpp" />
 		<Unit filename="fileSource.h" />
 		<Unit filename="main.cpp" />
-		<Unit filename="pcl_io.cpp" />
-		<Unit filename="reconstruct.cpp" />
-		<Unit filename="viewFreenect.cpp" />
-		<Unit filename="viewcloud.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />

@@ -4,3 +4,5 @@
 #include <iostream>
 
 int ex1();
+void mouseHandlerR(int event, int x, int y, int flags, void* param);
+void mouseHandlerL(int event, int x, int y, int flags, void* param);

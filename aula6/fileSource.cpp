@@ -312,8 +312,7 @@ int ex3(){
             cameraMatrix1, distCoeffs1,
             cameraMatrix2, distCoeffs2,
             imageL.size(), R, T, E, F,
-            TermCriteria(CV_TERMCRIT_ITER+CV_TERMCRIT_EPS, 50, 1e-6),
-            CV_CALIB_FIX_FOCAL_LENGTH );
+            TermCriteria(CV_TERMCRIT_ITER+CV_TERMCRIT_EPS, 50, 1e-6),CV_CALIB_SAME_FOCAL_LENGTH);
 
 
     cout <<  endl <<"done with RMS error=" << rms << endl;

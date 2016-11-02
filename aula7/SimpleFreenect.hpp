@@ -25,10 +25,10 @@ class SimpleFreenect
 	public:
 		/** Constructor */
 		SimpleFreenect();
-		
+
 		/** Destructor */
 		~SimpleFreenect();
-		
+
 		/**
 		 * Start receiving video frames.
 		 */
@@ -38,18 +38,18 @@ class SimpleFreenect
 		 * Start receiving depth frames.
 		 */
 		void startDepth(void);
-		
-		/** 
+
+		/**
 		 * Stop receiving frames.
 		 */
 		void stopVideo(void);
 
-		/** 
+		/**
 		 * Stop receiving depth frames.
 		 */
 		void stopDepth(void);
-		
-		/** 
+
+		/**
 		 * Try to grab the latest BGR frame. The grabbed frame can be accessed
 		 * in the BGR attribute.
 		 *
@@ -110,7 +110,7 @@ class SimpleFreenect
     cv::Mat depthMat;
 		unsigned int depthFrameCount;
 		bool newDepthFrame;
-		
+
 		uint8_t videoBuffer[FREENECT_VIDEO_RGB_SIZE];
     cv::Mat videoMat;
 		unsigned int videoFrameCount;

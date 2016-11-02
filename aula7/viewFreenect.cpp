@@ -63,10 +63,10 @@ int  main (int argc, char** argv)
 
    //Eigen::Matrix4f transformation = icp.getFinalTransformation ();
 
-  
+
    while (!viewer.wasStopped())
     {
     }
- 
+
   return (0);
 }
