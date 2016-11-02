@@ -208,26 +208,16 @@ int ex2(){
         fs.release();
 
 
-
-    Mat imageUndistortedL;
     for (i=0;i<1;i++){
         // read image
         sprintf(filename,"../images/stereovision/left%02d.jpg",i+1);
         printf("\nReading %s",filename);
         imageL = cv::imread(filename, CV_LOAD_IMAGE_COLOR);
 
-
-        //imshow("dsad", imageL);
-
-        undistort(imageL, imageUndistortedL, cameraMatrix1, distCoeffs1);
-
-
-
     }
     std::cout << cameraMatrix1 << std::endl;
 
     imshow("sdada", imageL);
-    imshow("undistorted", imageUndistortedL);
 
     cv::waitKey(-1);
 
@@ -236,18 +226,8 @@ int ex2(){
 }
 
 int ex3(){
-    return 0;
-}
 
-int ex4(){
-    return 0;
-
-}
-
-
-int ex5(){
-
-// ChessBoard Properties
+  // ChessBoard Properties
     int n_boards = 13; //Number of images
     int board_w = 9;
     int board_h = 6;
@@ -258,7 +238,7 @@ int ex5(){
 
     // Chessboard coordinates and image pixels
     std::vector<std::vector<cv::Point3f> > object_points;
-    std::vector<std::vector<cv::Point2f> > image_points;
+    std::vector<std::vector<cv::Point2f> > image_pointsL, image_pointsR ;
 
     // Corners detected in each image
     std::vector<cv::Point2f> cornersR, cornersL;
@@ -294,7 +274,6 @@ int ex5(){
         corner_countR = FindAndDisplayChessboard(imageR,board_w,board_h,&cornersR);
 
 
-
         sprintf(filename,"../images/stereovision/right%02d.jpg",i+1);
         printf("\nReading %s",filename);
         imageL = cv::imread(filename, CV_LOAD_IMAGE_COLOR);
@@ -310,60 +289,204 @@ int ex5(){
         corner_countL = FindAndDisplayChessboard(imageL,board_w,board_h,&cornersL);
 
         if (corner_countL == board_w * board_h){
-            image_points.push_back(cornersL);
+            image_pointsL.push_back(cornersL);
             object_points.push_back(obj);
             sucesses++;
         }
+
+        if (corner_countR == board_w * board_h){
+            image_pointsR.push_back(cornersR);
+            //object_pointsR.push_back(obj);
+            sucesses++;
+        }
+
     }
 
 
-    Mat map1x;
-    Mat map1y;
+    Mat cameraMatrix1, distCoeffs1;
+    Mat cameraMatrix2, distCoeffs2;
 
-    Mat map2x;
-    Mat map2y;
+    Mat R, T, E, F;
 
-    Mat R1;
-    Mat R2;
+    double rms = stereoCalibrate(object_points, image_pointsL, image_pointsR,
+            cameraMatrix1, distCoeffs1,
+            cameraMatrix2, distCoeffs2,
+            imageL.size(), R, T, E, F,
+            TermCriteria(CV_TERMCRIT_ITER+CV_TERMCRIT_EPS, 50, 1e-6),
+            CV_CALIB_FIX_FOCAL_LENGTH );
 
-    Mat P1;
-    Mat P2;
-    Mat Q;
 
-    cout << "\nStereoRectifyMap";
-    streoRectify(intrinsics1, distorcion1, intrisincs2, distorcion2, imageL.size(), rotation, translation);
+    cout <<  endl <<"done with RMS error=" << rms << endl;
 
-    cout << "\nnewInitUndistorcionMap";
-    initUndistorcionRectifyMap(intrisics1, distorcion1, R1 , P1, imageL.size(), CV_32FC1, ...);
-    initUndistorcionRectifyMap(intrisics2, distorcion2, R2 , P2, imageR.size(), CV_32FC1, ...);
+    cv::FileStorage fs("stereoParams.xml", cv::FileStorage::WRITE);
 
-    cout << "\nRemapMap";
-    Mat gray_imagel;
-    Mat remap_imagel;
-    cvtColor(imageL, gray_imagel, CV_RGB2GRAY);
-    remap(gray_imagel, remap_imagel, map1x, map1y, cv::INTER_LINEAR, cv::BORDER_CONSTANT, ...);
-
-    Mat gray_imager;
-    Mat remap_imager;
-    cvtColor(imageR, gray_imager, CV_RGB2GRAY);
-    remap(gray_imager, remap_imager, map2x, map2y, cv::INTER_LINEAR, cv::BORDER_CONSTANT, ...);
-
-    for(int i=0; i<remap_imagel.size().height; i=i+25){
-        line(remap_imagel, cvPoint(0,i), cvPoint(remap_imagel.size().width,i), cvScalar(255), 1);
-        line(remap_imager, cvPoint(0,i), cvPoint(remap_imager.size().width,i), cvScalar(255), 1);
+    if (!fs.isOpened()){
+        std::cout << "Failed to open stereoParams.xml" << std::endl;
+        return 1;
     }
+    else
+        std::cout << "Writing camera parameters" << std::endl;
+        fs << "cameraMatrix_1" << cameraMatrix1;
+        fs << "distCoeffs_1" << distCoeffs1;
+        fs << "cameraMatrix_2" << cameraMatrix2;
+        fs << "distCoeffs_2" << distCoeffs2;
+        fs << "rotation" << R;
+        fs << "translation" << T;
+        fs << "essential" << E;
+        fs << "fundamental" << F;
+        fs.release();
 
 
 
-    imshow("Remap Left",remap_imagel);
-    imshow("Remap Right",remap_imager);
+    Mat imageUndistortedL;
+    for (i=0;i<1;i++){
+        // read image
+        sprintf(filename,"../images/stereovision/left%02d.jpg",i+1);
+        printf("\nReading %s",filename);
+        imageL = cv::imread(filename, CV_LOAD_IMAGE_COLOR);
 
-    cvWaitKey(-1);
+
+        //imshow("dsad", imageL);
+
+        undistort(imageL, imageUndistortedL, cameraMatrix1, distCoeffs1);
+
+
+
+    }
+    std::cout << cameraMatrix1 << std::endl;
+
+    imshow("sdada", imageL);
+    imshow("undistorted", imageUndistortedL);
+
+    cv::waitKey(-1);
+
 
     return 0;
+}
 
+int ex4(){
+    return 0;
 
 }
+
+//int ex5(){
+//
+//// ChessBoard Properties
+//    int n_boards = 13; //Number of images
+//    int board_w = 9;
+//    int board_h = 6;
+//
+//    int board_sz = board_w * board_h;
+//
+//    char filename[200];
+//
+//    // Chessboard coordinates and image pixels
+//    std::vector<std::vector<cv::Point3f> > object_points;
+//    std::vector<std::vector<cv::Point2f> > image_points;
+//
+//    // Corners detected in each image
+//    std::vector<cv::Point2f> cornersR, cornersL;
+//
+//    int corner_countL, corner_countR;
+//
+//    cv::Mat imageL, imageR;
+//    int i;
+//
+//    int sucesses = 0;
+//
+//    // chessboard coordinates
+//    std::vector<cv::Point3f> obj;
+//    for(int j=0;j<board_sz;j++)
+//    obj.push_back(cv::Point3f(float(j/board_w), float(j%board_w), 0.0));
+//
+//
+//
+//    for (i=0;i<n_boards;i++){
+//        // read image
+//        sprintf(filename,"../images/stereovision/left%02d.jpg",i+1);
+//        printf("\nReading %s",filename);
+//        imageR = cv::imread(filename, CV_LOAD_IMAGE_COLOR);
+//
+//
+//        if(!imageR.data){
+//            printf("\nCould not load image file: %s\n",filename);
+//            getchar();
+//            return 0;
+//        }
+//
+//        // find and display corners
+//        corner_countR = FindAndDisplayChessboard(imageR,board_w,board_h,&cornersR);
+//
+//
+//
+//        sprintf(filename,"../images/stereovision/right%02d.jpg",i+1);
+//        printf("\nReading %s",filename);
+//        imageL = cv::imread(filename, CV_LOAD_IMAGE_COLOR);
+//
+//
+//        if(!imageL.data){
+//            printf("\nCould not load image file: %s\n",filename);
+//            getchar();
+//            return 0;
+//        }
+//
+//
+//        corner_countL = FindAndDisplayChessboard(imageL,board_w,board_h,&cornersL);
+//
+//        if (corner_countL == board_w * board_h){
+//            image_points.push_back(cornersL);
+//            object_points.push_back(obj);
+//            sucesses++;
+//        }
+//    }
+//
+//
+//    Mat map1x;
+//    Mat map1y;
+//
+//    Mat map2x;
+//    Mat map2y;
+//
+//    Mat R1;
+//    Mat R2;
+//
+//    Mat P1;
+//    Mat P2;
+//    Mat Q;
+//
+//    cout << "\nStereoRectifyMap";
+//    streoRectify(intrinsics1, distorcion1, intrisincs2, distorcion2, imageL.size(), rotation, translation);
+//
+//    cout << "\nnewInitUndistorcionMap";
+//    initUndistorcionRectifyMap(intrisics1, distorcion1, R1 , P1, imageL.size(), CV_32FC1, ...);
+//    initUndistorcionRectifyMap(intrisics2, distorcion2, R2 , P2, imageR.size(), CV_32FC1, ...);
+//
+//    cout << "\nRemapMap";
+//    Mat gray_imagel;
+//    Mat remap_imagel;
+//    cvtColor(imageL, gray_imagel, CV_RGB2GRAY);
+//    remap(gray_imagel, remap_imagel, map1x, map1y, cv::INTER_LINEAR, cv::BORDER_CONSTANT, ...);
+//
+//    Mat gray_imager;
+//    Mat remap_imager;
+//    cvtColor(imageR, gray_imager, CV_RGB2GRAY);
+//    remap(gray_imager, remap_imager, map2x, map2y, cv::INTER_LINEAR, cv::BORDER_CONSTANT, ...);
+//
+//    for(int i=0; i<remap_imagel.size().height; i=i+25){
+//        line(remap_imagel, cvPoint(0,i), cvPoint(remap_imagel.size().width,i), cvScalar(255), 1);
+//        line(remap_imager, cvPoint(0,i), cvPoint(remap_imager.size().width,i), cvScalar(255), 1);
+//    }
+//
+//
+//
+//    imshow("Remap Left",remap_imagel);
+//    imshow("Remap Right",remap_imager);
+//
+//    cvWaitKey(-1);
+//
+//    return 0;
+//
+//}
 
 
 
