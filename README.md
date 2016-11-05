@@ -30,6 +30,21 @@
 * [Resolução](https://github.com/toomyy94/CV1617-68779-68129/tree/master/aula5)
 
 
+#### Aula 6 (StereoVision)
+* [Slides](https://github.com/toomyy94/CV1617-68779-68129/blob/master/docs/slides/VC1617-lecture06.pdf)
+* [Assignments](https://github.com/toomyy94/CV1617-68779-68129/blob/master/docs/enunciation/VC1617-exercises06.pdf)
+* [Report](https://github.com/toomyy94/CV1617-68779-68129/blob/master/docs/reports/pdfs/VC1617_report_class6.pdf)
+* [Resolução](https://github.com/toomyy94/CV1617-68779-68129/tree/master/aula6)
+
+
+#### Aula 7 (3D Vision)
+* [Slides](https://github.com/toomyy94/CV1617-68779-68129/blob/master/docs/slides/VC1617-lecture07.pdf)
+* [Assignments](https://github.com/toomyy94/CV1617-68779-68129/blob/master/docs/enunciation/VC1617-exercises07.pdf)
+* [Report](https://github.com/toomyy94/CV1617-68779-68129/blob/master/docs/reports/pdfs/VC1617_report_class7.pdf)
+* [Resolução](https://github.com/toomyy94/CV1617-68779-68129/tree/master/aula7)
+
+
+
 ---
 
 ### Slides & Assignments
