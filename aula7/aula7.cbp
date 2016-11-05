@@ -32,9 +32,27 @@
 		<Linker>
 			<Add option="`opencv-config --ldstaticflags`" />
 		</Linker>
+		<Unit filename="Depth_Images/filt_office1.pcd" />
+		<Unit filename="Depth_Images/filt_office2.pcd" />
+		<Unit filename="Depth_Images/office1.pcd" />
+		<Unit filename="Depth_Images/office2.pcd" />
+		<Unit filename="SimpleFreenect.cpp" />
+		<Unit filename="SimpleFreenect.hpp" />
+		<Unit filename="aula7.depend" />
+		<Unit filename="aula7.layout" />
+		<Unit filename="bin/Debug/aula5" />
 		<Unit filename="fileSource.cpp" />
 		<Unit filename="fileSource.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="obj/Debug/fileSource.o" />
+		<Unit filename="obj/Debug/main.o" />
+		<Unit filename="obj/Debug/pcl_io.o" />
+		<Unit filename="obj/Debug/reconstruct.o" />
+		<Unit filename="pcl_io.cpp" />
+		<Unit filename="reconstruct.cpp" />
+		<Unit filename="stereoParams.xml" />
+		<Unit filename="viewFreenect.cpp" />
+		<Unit filename="viewcloud.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />
