@@ -4,7 +4,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/roliveira/Documents/CV/aula7-code/viewcloud_ex4.cpp" "/home/roliveira/Documents/CV/aula7-code/build/CMakeFiles/viewCloud4.dir/viewcloud_ex4.cpp.o"
+  "/home/roliveira/Documents/CV/aula7/viewcloud_ex4.cpp" "/home/roliveira/Documents/CV/aula7/build/CMakeFiles/viewCloud4.dir/viewcloud_ex4.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 

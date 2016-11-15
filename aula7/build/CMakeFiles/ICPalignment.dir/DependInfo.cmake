@@ -4,7 +4,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/roliveira/Documents/CV/aula7-code/viewFreenect.cpp" "/home/roliveira/Documents/CV/aula7-code/build/CMakeFiles/ICPalignment.dir/viewFreenect.cpp.o"
+  "/home/roliveira/Documents/CV/aula7/viewFreenect.cpp" "/home/roliveira/Documents/CV/aula7/build/CMakeFiles/ICPalignment.dir/viewFreenect.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 

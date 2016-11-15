@@ -50,10 +50,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/roliveira/Documents/CV/aula7-code
+CMAKE_SOURCE_DIR = /home/roliveira/Documents/CV/aula7
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/roliveira/Documents/CV/aula7-code/build
+CMAKE_BINARY_DIR = /home/roliveira/Documents/CV/aula7/build
 
 #=============================================================================
 # Target rules for target CMakeFiles/ICPalignment.dir
@@ -62,7 +62,7 @@ CMAKE_BINARY_DIR = /home/roliveira/Documents/CV/aula7-code/build
 CMakeFiles/ICPalignment.dir/all:
 	$(MAKE) -f CMakeFiles/ICPalignment.dir/build.make CMakeFiles/ICPalignment.dir/depend
 	$(MAKE) -f CMakeFiles/ICPalignment.dir/build.make CMakeFiles/ICPalignment.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/roliveira/Documents/CV/aula7-code/build/CMakeFiles  1
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/roliveira/Documents/CV/aula7/build/CMakeFiles  1
 	@echo "Built target ICPalignment"
 .PHONY : CMakeFiles/ICPalignment.dir/all
 
@@ -72,9 +72,9 @@ all: CMakeFiles/ICPalignment.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/ICPalignment.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/roliveira/Documents/CV/aula7-code/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/roliveira/Documents/CV/aula7/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/ICPalignment.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/roliveira/Documents/CV/aula7-code/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/roliveira/Documents/CV/aula7/build/CMakeFiles 0
 .PHONY : CMakeFiles/ICPalignment.dir/rule
 
 # Convenience name for target.
@@ -97,7 +97,7 @@ clean: CMakeFiles/ICPalignment.dir/clean
 CMakeFiles/reconstruct.dir/all:
 	$(MAKE) -f CMakeFiles/reconstruct.dir/build.make CMakeFiles/reconstruct.dir/depend
 	$(MAKE) -f CMakeFiles/reconstruct.dir/build.make CMakeFiles/reconstruct.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/roliveira/Documents/CV/aula7-code/build/CMakeFiles  2
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/roliveira/Documents/CV/aula7/build/CMakeFiles  2
 	@echo "Built target reconstruct"
 .PHONY : CMakeFiles/reconstruct.dir/all
 
@@ -107,9 +107,9 @@ all: CMakeFiles/reconstruct.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/reconstruct.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/roliveira/Documents/CV/aula7-code/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/roliveira/Documents/CV/aula7/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/reconstruct.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/roliveira/Documents/CV/aula7-code/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/roliveira/Documents/CV/aula7/build/CMakeFiles 0
 .PHONY : CMakeFiles/reconstruct.dir/rule
 
 # Convenience name for target.
@@ -132,7 +132,7 @@ clean: CMakeFiles/reconstruct.dir/clean
 CMakeFiles/viewCloud3.dir/all:
 	$(MAKE) -f CMakeFiles/viewCloud3.dir/build.make CMakeFiles/viewCloud3.dir/depend
 	$(MAKE) -f CMakeFiles/viewCloud3.dir/build.make CMakeFiles/viewCloud3.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/roliveira/Documents/CV/aula7-code/build/CMakeFiles  3
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/roliveira/Documents/CV/aula7/build/CMakeFiles  3
 	@echo "Built target viewCloud3"
 .PHONY : CMakeFiles/viewCloud3.dir/all
 
@@ -142,9 +142,9 @@ all: CMakeFiles/viewCloud3.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/viewCloud3.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/roliveira/Documents/CV/aula7-code/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/roliveira/Documents/CV/aula7/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/viewCloud3.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/roliveira/Documents/CV/aula7-code/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/roliveira/Documents/CV/aula7/build/CMakeFiles 0
 .PHONY : CMakeFiles/viewCloud3.dir/rule
 
 # Convenience name for target.
@@ -167,7 +167,7 @@ clean: CMakeFiles/viewCloud3.dir/clean
 CMakeFiles/viewCloud4.dir/all:
 	$(MAKE) -f CMakeFiles/viewCloud4.dir/build.make CMakeFiles/viewCloud4.dir/depend
 	$(MAKE) -f CMakeFiles/viewCloud4.dir/build.make CMakeFiles/viewCloud4.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/roliveira/Documents/CV/aula7-code/build/CMakeFiles  4
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/roliveira/Documents/CV/aula7/build/CMakeFiles  4
 	@echo "Built target viewCloud4"
 .PHONY : CMakeFiles/viewCloud4.dir/all
 
@@ -177,9 +177,9 @@ all: CMakeFiles/viewCloud4.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/viewCloud4.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/roliveira/Documents/CV/aula7-code/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/roliveira/Documents/CV/aula7/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/viewCloud4.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/roliveira/Documents/CV/aula7-code/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/roliveira/Documents/CV/aula7/build/CMakeFiles 0
 .PHONY : CMakeFiles/viewCloud4.dir/rule
 
 # Convenience name for target.
@@ -202,7 +202,7 @@ clean: CMakeFiles/viewCloud4.dir/clean
 CMakeFiles/viewOpenni.dir/all:
 	$(MAKE) -f CMakeFiles/viewOpenni.dir/build.make CMakeFiles/viewOpenni.dir/depend
 	$(MAKE) -f CMakeFiles/viewOpenni.dir/build.make CMakeFiles/viewOpenni.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/roliveira/Documents/CV/aula7-code/build/CMakeFiles  5
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/roliveira/Documents/CV/aula7/build/CMakeFiles  5
 	@echo "Built target viewOpenni"
 .PHONY : CMakeFiles/viewOpenni.dir/all
 
@@ -212,9 +212,9 @@ all: CMakeFiles/viewOpenni.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/viewOpenni.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/roliveira/Documents/CV/aula7-code/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/roliveira/Documents/CV/aula7/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/viewOpenni.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/roliveira/Documents/CV/aula7-code/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/roliveira/Documents/CV/aula7/build/CMakeFiles 0
 .PHONY : CMakeFiles/viewOpenni.dir/rule
 
 # Convenience name for target.

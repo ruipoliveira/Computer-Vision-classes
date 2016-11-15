@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/roliveira/Documents/CV/aula7-code/pcl_io.cpp
+/home/roliveira/Documents/CV/aula7/pcl_io.cpp
 pcl/io/openni_grabber.h
 -
 pcl/visualization/cloud_viewer.h

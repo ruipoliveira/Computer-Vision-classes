@@ -39,7 +39,7 @@ char key='1';
          viewer->showCloud (cloud);
 	 if (key=='w')
 	 {
-	   pcl::io::savePCDFileASCII ("test_1.pcd", *cloud);
+	   pcl::io::savePCDFileASCII ("../filt_kinect1.pcd", *cloud);
 	   key = '1';
 	 }
        }

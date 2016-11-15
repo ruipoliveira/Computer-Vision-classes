@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/roliveira/Documents/CV/aula7-code/viewcloud_ex3.cpp
+/home/roliveira/Documents/CV/aula7/viewcloud_ex3.cpp
 iostream
 -
 pcl/pcl_base.h

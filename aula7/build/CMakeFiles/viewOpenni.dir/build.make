@@ -38,10 +38,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/roliveira/Documents/CV/aula7-code
+CMAKE_SOURCE_DIR = /home/roliveira/Documents/CV/aula7
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/roliveira/Documents/CV/aula7-code/build
+CMAKE_BINARY_DIR = /home/roliveira/Documents/CV/aula7/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/viewOpenni.dir/depend.make
@@ -54,17 +54,17 @@ include CMakeFiles/viewOpenni.dir/flags.make
 
 CMakeFiles/viewOpenni.dir/pcl_io.cpp.o: CMakeFiles/viewOpenni.dir/flags.make
 CMakeFiles/viewOpenni.dir/pcl_io.cpp.o: ../pcl_io.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/roliveira/Documents/CV/aula7-code/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/roliveira/Documents/CV/aula7/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/viewOpenni.dir/pcl_io.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/viewOpenni.dir/pcl_io.cpp.o -c /home/roliveira/Documents/CV/aula7-code/pcl_io.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/viewOpenni.dir/pcl_io.cpp.o -c /home/roliveira/Documents/CV/aula7/pcl_io.cpp
 
 CMakeFiles/viewOpenni.dir/pcl_io.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/viewOpenni.dir/pcl_io.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/roliveira/Documents/CV/aula7-code/pcl_io.cpp > CMakeFiles/viewOpenni.dir/pcl_io.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/roliveira/Documents/CV/aula7/pcl_io.cpp > CMakeFiles/viewOpenni.dir/pcl_io.cpp.i
 
 CMakeFiles/viewOpenni.dir/pcl_io.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/viewOpenni.dir/pcl_io.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/roliveira/Documents/CV/aula7-code/pcl_io.cpp -o CMakeFiles/viewOpenni.dir/pcl_io.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/roliveira/Documents/CV/aula7/pcl_io.cpp -o CMakeFiles/viewOpenni.dir/pcl_io.cpp.s
 
 CMakeFiles/viewOpenni.dir/pcl_io.cpp.o.requires:
 .PHONY : CMakeFiles/viewOpenni.dir/pcl_io.cpp.o.requires
@@ -242,6 +242,6 @@ CMakeFiles/viewOpenni.dir/clean:
 .PHONY : CMakeFiles/viewOpenni.dir/clean
 
 CMakeFiles/viewOpenni.dir/depend:
-	cd /home/roliveira/Documents/CV/aula7-code/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/roliveira/Documents/CV/aula7-code /home/roliveira/Documents/CV/aula7-code /home/roliveira/Documents/CV/aula7-code/build /home/roliveira/Documents/CV/aula7-code/build /home/roliveira/Documents/CV/aula7-code/build/CMakeFiles/viewOpenni.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/roliveira/Documents/CV/aula7/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/roliveira/Documents/CV/aula7 /home/roliveira/Documents/CV/aula7 /home/roliveira/Documents/CV/aula7/build /home/roliveira/Documents/CV/aula7/build /home/roliveira/Documents/CV/aula7/build/CMakeFiles/viewOpenni.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/viewOpenni.dir/depend
 

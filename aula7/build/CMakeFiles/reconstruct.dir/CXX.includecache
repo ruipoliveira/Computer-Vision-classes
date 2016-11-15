@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/roliveira/Documents/CV/aula7-code/reconstruct.cpp
+/home/roliveira/Documents/CV/aula7/reconstruct.cpp
 iostream
 -
 vector

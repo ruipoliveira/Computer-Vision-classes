@@ -38,10 +38,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/roliveira/Documents/CV/aula7-code
+CMAKE_SOURCE_DIR = /home/roliveira/Documents/CV/aula7
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/roliveira/Documents/CV/aula7-code/build
+CMAKE_BINARY_DIR = /home/roliveira/Documents/CV/aula7/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/ICPalignment.dir/depend.make
@@ -54,17 +54,17 @@ include CMakeFiles/ICPalignment.dir/flags.make
 
 CMakeFiles/ICPalignment.dir/viewFreenect.cpp.o: CMakeFiles/ICPalignment.dir/flags.make
 CMakeFiles/ICPalignment.dir/viewFreenect.cpp.o: ../viewFreenect.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/roliveira/Documents/CV/aula7-code/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/roliveira/Documents/CV/aula7/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/ICPalignment.dir/viewFreenect.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ICPalignment.dir/viewFreenect.cpp.o -c /home/roliveira/Documents/CV/aula7-code/viewFreenect.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ICPalignment.dir/viewFreenect.cpp.o -c /home/roliveira/Documents/CV/aula7/viewFreenect.cpp
 
 CMakeFiles/ICPalignment.dir/viewFreenect.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ICPalignment.dir/viewFreenect.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/roliveira/Documents/CV/aula7-code/viewFreenect.cpp > CMakeFiles/ICPalignment.dir/viewFreenect.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/roliveira/Documents/CV/aula7/viewFreenect.cpp > CMakeFiles/ICPalignment.dir/viewFreenect.cpp.i
 
 CMakeFiles/ICPalignment.dir/viewFreenect.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ICPalignment.dir/viewFreenect.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/roliveira/Documents/CV/aula7-code/viewFreenect.cpp -o CMakeFiles/ICPalignment.dir/viewFreenect.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/roliveira/Documents/CV/aula7/viewFreenect.cpp -o CMakeFiles/ICPalignment.dir/viewFreenect.cpp.s
 
 CMakeFiles/ICPalignment.dir/viewFreenect.cpp.o.requires:
 .PHONY : CMakeFiles/ICPalignment.dir/viewFreenect.cpp.o.requires
@@ -242,6 +242,6 @@ CMakeFiles/ICPalignment.dir/clean:
 .PHONY : CMakeFiles/ICPalignment.dir/clean
 
 CMakeFiles/ICPalignment.dir/depend:
-	cd /home/roliveira/Documents/CV/aula7-code/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/roliveira/Documents/CV/aula7-code /home/roliveira/Documents/CV/aula7-code /home/roliveira/Documents/CV/aula7-code/build /home/roliveira/Documents/CV/aula7-code/build /home/roliveira/Documents/CV/aula7-code/build/CMakeFiles/ICPalignment.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/roliveira/Documents/CV/aula7/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/roliveira/Documents/CV/aula7 /home/roliveira/Documents/CV/aula7 /home/roliveira/Documents/CV/aula7/build /home/roliveira/Documents/CV/aula7/build /home/roliveira/Documents/CV/aula7/build/CMakeFiles/ICPalignment.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/ICPalignment.dir/depend
 

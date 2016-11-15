@@ -236,11 +236,13 @@ CMakeFiles/ICPalignment.dir/viewFreenect.cpp.o: /usr/include/pcl-1.7/pcl/Texture
 CMakeFiles/ICPalignment.dir/viewFreenect.cpp.o: /usr/include/pcl-1.7/pcl/Vertices.h
 CMakeFiles/ICPalignment.dir/viewFreenect.cpp.o: /usr/include/pcl-1.7/pcl/cloud_iterator.h
 CMakeFiles/ICPalignment.dir/viewFreenect.cpp.o: /usr/include/pcl-1.7/pcl/common/centroid.h
+CMakeFiles/ICPalignment.dir/viewFreenect.cpp.o: /usr/include/pcl-1.7/pcl/common/common.h
 CMakeFiles/ICPalignment.dir/viewFreenect.cpp.o: /usr/include/pcl-1.7/pcl/common/concatenate.h
 CMakeFiles/ICPalignment.dir/viewFreenect.cpp.o: /usr/include/pcl-1.7/pcl/common/copy_point.h
 CMakeFiles/ICPalignment.dir/viewFreenect.cpp.o: /usr/include/pcl-1.7/pcl/common/eigen.h
 CMakeFiles/ICPalignment.dir/viewFreenect.cpp.o: /usr/include/pcl-1.7/pcl/common/impl/accumulators.hpp
 CMakeFiles/ICPalignment.dir/viewFreenect.cpp.o: /usr/include/pcl-1.7/pcl/common/impl/centroid.hpp
+CMakeFiles/ICPalignment.dir/viewFreenect.cpp.o: /usr/include/pcl-1.7/pcl/common/impl/common.hpp
 CMakeFiles/ICPalignment.dir/viewFreenect.cpp.o: /usr/include/pcl-1.7/pcl/common/impl/copy_point.hpp
 CMakeFiles/ICPalignment.dir/viewFreenect.cpp.o: /usr/include/pcl-1.7/pcl/common/impl/eigen.hpp
 CMakeFiles/ICPalignment.dir/viewFreenect.cpp.o: /usr/include/pcl-1.7/pcl/common/impl/io.hpp
@@ -253,6 +255,11 @@ CMakeFiles/ICPalignment.dir/viewFreenect.cpp.o: /usr/include/pcl-1.7/pcl/console
 CMakeFiles/ICPalignment.dir/viewFreenect.cpp.o: /usr/include/pcl-1.7/pcl/conversions.h
 CMakeFiles/ICPalignment.dir/viewFreenect.cpp.o: /usr/include/pcl-1.7/pcl/correspondence.h
 CMakeFiles/ICPalignment.dir/viewFreenect.cpp.o: /usr/include/pcl-1.7/pcl/exceptions.h
+CMakeFiles/ICPalignment.dir/viewFreenect.cpp.o: /usr/include/pcl-1.7/pcl/filters/boost.h
+CMakeFiles/ICPalignment.dir/viewFreenect.cpp.o: /usr/include/pcl-1.7/pcl/filters/filter.h
+CMakeFiles/ICPalignment.dir/viewFreenect.cpp.o: /usr/include/pcl-1.7/pcl/filters/impl/filter.hpp
+CMakeFiles/ICPalignment.dir/viewFreenect.cpp.o: /usr/include/pcl-1.7/pcl/filters/impl/voxel_grid.hpp
+CMakeFiles/ICPalignment.dir/viewFreenect.cpp.o: /usr/include/pcl-1.7/pcl/filters/voxel_grid.h
 CMakeFiles/ICPalignment.dir/viewFreenect.cpp.o: /usr/include/pcl-1.7/pcl/for_each_type.h
 CMakeFiles/ICPalignment.dir/viewFreenect.cpp.o: /usr/include/pcl-1.7/pcl/geometry/planar_polygon.h
 CMakeFiles/ICPalignment.dir/viewFreenect.cpp.o: /usr/include/pcl-1.7/pcl/impl/cloud_iterator.hpp

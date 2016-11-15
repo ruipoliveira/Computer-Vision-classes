@@ -38,10 +38,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/roliveira/Documents/CV/aula7-code
+CMAKE_SOURCE_DIR = /home/roliveira/Documents/CV/aula7
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/roliveira/Documents/CV/aula7-code/build
+CMAKE_BINARY_DIR = /home/roliveira/Documents/CV/aula7/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/viewCloud3.dir/depend.make
@@ -54,17 +54,17 @@ include CMakeFiles/viewCloud3.dir/flags.make
 
 CMakeFiles/viewCloud3.dir/viewcloud_ex3.cpp.o: CMakeFiles/viewCloud3.dir/flags.make
 CMakeFiles/viewCloud3.dir/viewcloud_ex3.cpp.o: ../viewcloud_ex3.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/roliveira/Documents/CV/aula7-code/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/roliveira/Documents/CV/aula7/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/viewCloud3.dir/viewcloud_ex3.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/viewCloud3.dir/viewcloud_ex3.cpp.o -c /home/roliveira/Documents/CV/aula7-code/viewcloud_ex3.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/viewCloud3.dir/viewcloud_ex3.cpp.o -c /home/roliveira/Documents/CV/aula7/viewcloud_ex3.cpp
 
 CMakeFiles/viewCloud3.dir/viewcloud_ex3.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/viewCloud3.dir/viewcloud_ex3.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/roliveira/Documents/CV/aula7-code/viewcloud_ex3.cpp > CMakeFiles/viewCloud3.dir/viewcloud_ex3.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/roliveira/Documents/CV/aula7/viewcloud_ex3.cpp > CMakeFiles/viewCloud3.dir/viewcloud_ex3.cpp.i
 
 CMakeFiles/viewCloud3.dir/viewcloud_ex3.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/viewCloud3.dir/viewcloud_ex3.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/roliveira/Documents/CV/aula7-code/viewcloud_ex3.cpp -o CMakeFiles/viewCloud3.dir/viewcloud_ex3.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/roliveira/Documents/CV/aula7/viewcloud_ex3.cpp -o CMakeFiles/viewCloud3.dir/viewcloud_ex3.cpp.s
 
 CMakeFiles/viewCloud3.dir/viewcloud_ex3.cpp.o.requires:
 .PHONY : CMakeFiles/viewCloud3.dir/viewcloud_ex3.cpp.o.requires
@@ -242,6 +242,6 @@ CMakeFiles/viewCloud3.dir/clean:
 .PHONY : CMakeFiles/viewCloud3.dir/clean
 
 CMakeFiles/viewCloud3.dir/depend:
-	cd /home/roliveira/Documents/CV/aula7-code/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/roliveira/Documents/CV/aula7-code /home/roliveira/Documents/CV/aula7-code /home/roliveira/Documents/CV/aula7-code/build /home/roliveira/Documents/CV/aula7-code/build /home/roliveira/Documents/CV/aula7-code/build/CMakeFiles/viewCloud3.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/roliveira/Documents/CV/aula7/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/roliveira/Documents/CV/aula7 /home/roliveira/Documents/CV/aula7 /home/roliveira/Documents/CV/aula7/build /home/roliveira/Documents/CV/aula7/build /home/roliveira/Documents/CV/aula7/build/CMakeFiles/viewCloud3.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/viewCloud3.dir/depend
 
