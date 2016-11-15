@@ -113,7 +113,7 @@ O resultado obtidos pode ser observado na seguinte figura.
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=70mm]{img/ex1.png}
-\caption{Resultado obtido após exercício 2}
+\caption{Resultado obtido após exercício 1}
 \end{figure}
 
 
@@ -278,19 +278,48 @@ case, and given the proximity of the provided depth images this should not be ne
 
 \subsubsection{Resolução e principais conclusões}
 
-descricao
+Para a resolução deste exercício foi utilizado o ficheiro \texttt{viewFreenect.cpp} disponibilizado. A linha \texttt{change\_color(aligned\_cloud,0,0,255);} foi substituída pelo excerto de código que a seguir se apresenta. 
 
-em falta 
+\newpage
 
-\begin{lstlisting}[caption=Função contagem dos cantos,label=code:C]
-code sample
+\begin{lstlisting}[caption=colors cloudAligned red for viewing purposes,label=code:C]
+int p = 0;
+for (int i = 0; i < (*aligned_cloud).height; ++i) {
+    for (int j = 0; j < (*aligned_cloud).width; j++) {
+        (*aligned_cloud).points[p].r = 255;
+        (*aligned_cloud).points[p].g = 0;
+        (*aligned_cloud).points[p].b = 255;
+        p++;
+    }
+} 
 \end{lstlisting}
+
+Por fim, foi usada o método \texttt{showCloud()} para visualização do \texttt{cloud1}, \texttt{cloud2} e \texttt{aligned\_cloud}. 
+
+Foi utilizado o ficheiro \texttt{pcl\_io.cpp} que permite capturar imagem através de um kinect. A imagem é capturada quando é pressionado o carácter \texttt{'w'} e consequentemente é adicionada um nova entrada ao ficheiro \texttt{.pcd}. 
+
+Foram capturadas duas imagens de locais distintos:
+\begin{itemize}
+    \item \texttt{filt\_kinect1\_cozinha.pcd},  \texttt{filt\_kinect1\_cozinha2.pcd}
+    \item \texttt{filt\_kinect1\_quarto.pcd},  \texttt{filt\_kinect1\_quarto2.pcd}
+\end{itemize}
+
+O resultados obtidos para as duas imagens são apresentados de seguida. 
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=70mm]{img/ex2.png}
-\caption{Resultado obtido após exercício 5}
+\includegraphics[width=70mm]{img/cozinha.png}
+\caption{Resultado obtido após exercício 5 - cozinha}
 \end{figure}
+
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=70mm]{img/quarto.png}
+\caption{Resultado obtido após exercício 5 - quarto}
+\end{figure}
+
+Como pode ser observado pelas imagens acima, os resultados não foram os melhores. Deve-se ao facto de termos capturado demasiados pontos e estes demorarem demasiado tempo a serem processados. Optamos por eliminar manualmente alguns desses e assim conseguirmos obter algum resultado.
 
 
 
