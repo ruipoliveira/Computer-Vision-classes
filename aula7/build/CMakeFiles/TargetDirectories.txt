@@ -1,0 +1,5 @@
+/home/roliveira/Documents/CV/aula7-code/build/CMakeFiles/ICPalignment.dir
+/home/roliveira/Documents/CV/aula7-code/build/CMakeFiles/reconstruct.dir
+/home/roliveira/Documents/CV/aula7-code/build/CMakeFiles/viewCloud3.dir
+/home/roliveira/Documents/CV/aula7-code/build/CMakeFiles/viewCloud4.dir
+/home/roliveira/Documents/CV/aula7-code/build/CMakeFiles/viewOpenni.dir

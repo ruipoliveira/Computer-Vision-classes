@@ -25,14 +25,14 @@ void change_color(pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud, int r, int g, in
 int  main (int argc, char** argv)
 {
     pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud1 (new pcl::PointCloud<pcl::PointXYZRGB>);
-    if (pcl::io::loadPCDFile<pcl::PointXYZRGB> ("..//depth_images//filt_office1.pcd", *cloud1) == -1) //* load the file
+    if (pcl::io::loadPCDFile<pcl::PointXYZRGB> ("..//filt_office1.pcd", *cloud1) == -1) //* load the file
       {
         PCL_ERROR ("Couldn't read file filt_office1.pcd \n");
         return (-1);
       }
 
     pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud2 (new pcl::PointCloud<pcl::PointXYZRGB>);
-    if (pcl::io::loadPCDFile<pcl::PointXYZRGB> ("..//depth_images//filt_office2.pcd", *cloud2) == -1) //* load the file
+    if (pcl::io::loadPCDFile<pcl::PointXYZRGB> ("..//filt_office2.pcd", *cloud2) == -1) //* load the file
       {
         PCL_ERROR ("Couldn't read file filt_office2.pcd \n");
         return (-1);
@@ -63,10 +63,10 @@ int  main (int argc, char** argv)
 
    //Eigen::Matrix4f transformation = icp.getFinalTransformation ();
 
-
+  
    while (!viewer.wasStopped())
     {
     }
-
+ 
   return (0);
 }
