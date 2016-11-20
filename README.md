@@ -43,6 +43,14 @@
 * [Report](https://github.com/toomyy94/CV1617-68779-68129/blob/master/docs/reports/pdfs/VC1617_report_class7.pdf)
 * [Source code](https://github.com/toomyy94/CV1617-68779-68129/tree/master/aula7)
 
+#### Aula 8 (Project - leaves classification )
+* [Repository leaves-classification-opencv ](https://github.com/ruipoliveira/leaves-classification-opencv)
+
+#### Aula 9 (Motion)
+* [Slides](https://github.com/toomyy94/CV1617-68779-68129/blob/master/docs/slides/VC1617-lecture08.pdf)
+* [Assignments](https://github.com/toomyy94/CV1617-68779-68129/blob/master/docs/enunciation/VC1617-exercises08.pdf)
+* [Report](https://github.com/toomyy94/CV1617-68779-68129/blob/master/docs/reports/pdfs/VC1617_report_class8.pdf)
+* [Source code](https://github.com/toomyy94/CV1617-68779-68129/tree/master/aula8)
 
 
 ---
