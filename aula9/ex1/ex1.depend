@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1479298453 source:/home/gabriel/VC/aula7/ex1/main.cpp
+	<opencv2/core/core.hpp>
+	<opencv2/imgproc/imgproc.hpp>
+	<opencv2/highgui/highgui.hpp>
+	<vector>
+	<cmath>
+	<iostream>
+	<opencv2/video/tracking.hpp>
+
+1479826444 source:/home/tomas/Dropbox/UNIVERSIDADE/5Ano/VC/CV1617-68779-68129.git/aula9/ex1/main.cpp
+	<opencv2/core/core.hpp>
+	<opencv2/imgproc/imgproc.hpp>
+	<opencv2/highgui/highgui.hpp>
+	<vector>
+	<cmath>
+	<iostream>
+	<opencv2/video/tracking.hpp>
+
