@@ -7,6 +7,7 @@
 #include <opencv2/calib3d/calib3d.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 #include "opencv2/video/tracking.hpp"
+#include "opencv2/video/background_segm.hpp"
 
 #include <string>
 #include <unistd.h>
@@ -69,184 +70,150 @@ static void roiSelection(int event, int x, int y, int, void*) {
 
 int ex1(){
 
-//	bool sel;
 //
-//	Mat frame, hsv, roi, mask, roiMask, roiHist, backProj;
+//  VideoCapture cap(0); // open the default camera
+//  if(!cap.isOpened())  // check if we succeeded
+//     return -1;
 //
-//	//video file
-//	const char* video = "vid/vid1.mp4";
+//  Mat flow;
 //
-//	//histogram configurations
-//	int channels[] = {0, 1};
-//	int hbins = 30;
-//	int sbins = 32;
-//	int histSize[] = {hbins, sbins};
-//	float hrange[] = {0, 180};
-//	float srange[] = {0, 256};
-//	const float* histRange[] = {hrange, srange};
+//  // some faster than mat image container
+//    Mat flowUmat, prevgray;
 //
-//	//presents user interface
-//	system("clear");		//clears terminal window
-//	cout
-//	<< endl
-//	<< " -----------------" << endl
-//	<< "  Object Tracking " << endl
-//	<< " -----------------" << endl
-//	<< endl
-//	<< " Choose to track object in video feed [0] or video file [1]: ";
-//	cin >> sel;
-//	cout << endl;
+//     for (;;)
+//     {
 //
-//	//initializes video capture
-//	VideoCapture cap;
-//	if (sel) cap.open(video);
-//	else cap.open(0);
+//       Mat frame;
+//       cap >> frame;
 //
-//	if (!cap.isOpened()) return -1;
+//       //Mat img;
+//       Mat original;
 //
-//	//defines termination criteria for cam shift
-//	TermCriteria termCrit = TermCriteria(CV_TERMCRIT_EPS | CV_TERMCRIT_ITER, 10, 1);
+//       // capture frame from video file
+//       cap.retrieve(frame, CV_CAP_OPENNI_BGR_IMAGE);
+//       resize(frame, frame, Size(640, 480));
 //
-//	//performs tracking
-//	for (;;) {
-//		cap >> frame;		//gets new frame
+//       // save original for later
+//       frame.copyTo(original);
 //
-//		//ends tracking if video ends
-//		if (frame.rows == 0 || frame.cols == 0) break;
+//       // just make current frame gray
+//       cvtColor(frame, frame, COLOR_BGR2GRAY);
 //
-//		//converts frame to HSV colorspace
-//		cvtColor(frame, hsv, COLOR_BGR2HSV);
+//       if (prevgray.empty() == false ) {
 //
-//		//gets mask (easier and more accurate detection)
-//		inRange(hsv, Scalar(0, SMIN, MIN(VMIN, VMAX)),
-//           	Scalar(180, 256, MAX(VMIN, VMAX)), mask);
+//        // calculate optical flow
+//        calcOpticalFlowFarneback(prevgray, frame, flowUmat, 0.4, 1, 12, 2, 8, 1.2, 0);
+//        // copy Umat container to standard Mat
+//        flowUmat.copyTo(flow);
 //
-//        //displays point selection (cnt == 0 by default)
-//		if (cnt == 0) {
-//			cout
-//			<< " Select two points to define ROI with the mouse. A third mouse click will reset the selection." << endl
-//			<< " Press ENTER when the selection is made." << endl << endl;
 //
-//			//images for selection
-//			roiFrame = frame.clone();
-//			roiAux = roiFrame.clone();
+//               // By y += 5, x += 5 you can specify the grid
+//        for (int y = 0; y < original.rows; y += 5) {
+//         for (int x = 0; x < original.cols; x += 5)
+//         {
+//                  // get the flow from y, x position * 10 for better visibility
+//            const Point2f flowatxy = flow.at<Point2f>(y, x) * 10;
+//                         // draw line at flow direction
+//            line(original, Point(x, y), Point(cvRound(x + flowatxy.x), cvRound(y + flowatxy.y)), Scalar(0,0,255));
+//                                                             // draw initial point
+//            circle(original, Point(x, y), 1, Scalar(0, 0, 0), -1);
+//          }
 //
-//			//mouse callback for selecting ROI
-//			imshow("Object Tracking", roiFrame);
-//			setMouseCallback("Object Tracking", roiSelection);
-//			waitKey(0);
+//         }
+//         // draw the results
+//        namedWindow("prew", WINDOW_AUTOSIZE);
+//        imshow("prew", original);
 //
-//			//is points have been selected and ROI defined
-//			if (roiPts.size() == 2) {
-//				//creates ROI and ROI mask
-//				roi = hsv(roiBox);
-//				roiMask = mask(roiBox);
+//        // fill previous image again
+//        frame.copyTo(prevgray);
 //
-//				//creates ROI histogram
-//				//(using both hue and sat (2 channels) gives better results)
-//				calcHist(&roi, 1, channels, roiMask, roiHist, 2, histSize, histRange);
-//				normalize(roiHist, roiHist, 0, 255, NORM_MINMAX);
-//			}
-//			else {
-//				cout << " Error: not enough points selected to form ROI." << endl;
-//				return -1;
-//			}
-//		}
+//       }
+//       else {
 //
-//		//calculates histogram back projection
-//		calcBackProject(&hsv, 1, channels, roiHist, backProj, histRange);
+//        // fill previous image in case prevgray.empty() == true
+//        frame.copyTo(prevgray);
 //
-//		//backProj takes into account mask (better results)
-//		backProj &= mask;
+//       }
 //
-//		//calculates cam shift to track object inside ROI
-//		RotatedRect trackBox = CamShift(backProj, roiBox, termCrit);
-//
-//		//draws ellipse around tracked object
-//		ellipse(frame, trackBox, Scalar(255, 0, 0), 2);
-//
-//		imshow("Object Tracking", frame);
-//
-//		if (waitKey(24) >= 0) break;
-//	}
-//	return 0;
+//       int key1 = waitKey(20);
+//     }
 }
 
 
 
 int ex2(){
-//Mat fgMaskMOG2; //fg mask fg mask generated by MOG2 method
-//	Ptr<BackgroundSubtractor> pMOG2; //MOG2 Background subtractor
-//	pMOG2 = createBackgroundSubtractorMOG2(); //MOG2 approach
-//
-//	//opens default camera
-//	VideoCapture cap(0);
-//  VideoCapture capture(filename);
-//
-//	//check if success
-//	if (!cap.isOpened())
-//		{
-//			cout << "Error when reading camera!" << endl;
-//			return -1;
-//		}
-//  if(!capture.isOpened())
-//	{
-//		cout << "Error when reading video file!" << endl;
-//		return -1;
-//	}
-//
-//	//presents options to user
-//	system("clear");		//clears terminal window
-//	cout << endl << "---------------" << endl;
-//	cout << " Choose Video Capture[0] or load a Video File[1]" << endl;
-//	cout << "---------------" << endl << endl;
-//	cin >> type;
-//
-//  if(type)
-//  {
-//    namedWindow( "Video File", 1);
-//    for( ; ; )
-//    {
-//      capture >> frame;
-//      if(frame.empty())
-//        break;
-//      imshow("Video File", frame);
-//
-//			//update the background model
-//			pMOG2->apply(frame, fgMaskMOG2);
-//			//get the frame number and write it on the current frame
-//			stringstream ss;
-//			rectangle(frame, cv::Point(10, 2), cv::Point(100,20),
-//			          cv::Scalar(255,255,255), -1);
-//			ss << capture.get(CAP_PROP_POS_FRAMES);
-//			string frameNumberString = ss.str();
-//			putText(frame, frameNumberString.c_str(), cv::Point(15, 15),
-//			        FONT_HERSHEY_SIMPLEX, 0.5 , cv::Scalar(0,0,0));
-//			//show the current frame and the fg masks
-//			imshow("Video File Subtracted", fgMaskMOG2);
-//
-//      waitKey(20);
-//    }
-//    waitKey(0);
-//  }
-//	else
-//	{
-//		namedWindow("Video Capture", 1);
-//		for(;;)
-//		{
-//			cap >> frame;
-//			if(frame.empty())
-//				break;
-//			imshow("Video Capture", frame);
-//			pMOG2->apply(frame, fgMaskMOG2);
-//			imshow("Video Capture Subtracted", fgMaskMOG2);
-//			if (waitKey(5) >= 0) break;				//waits 30ms for program to render next frame
-//		}
-//		waitKey(0);
-//}
-//
-//
-//    return 0;
+Mat fgMaskMOG2; //fg mask fg mask generated by MOG2 method
+	Ptr<BackgroundSubtractor> pMOG2; //MOG2 Background subtractor
+	pMOG2 = createBackgroundSubtractorMOG2(); //MOG2 approach
+
+	//opens default camera
+	VideoCapture cap(0);
+  VideoCapture capture(filename);
+
+	//check if success
+	if (!cap.isOpened())
+		{
+			cout << "Error when reading camera!" << endl;
+			return -1;
+		}
+  if(!capture.isOpened())
+	{
+		cout << "Error when reading video file!" << endl;
+		return -1;
+	}
+
+	//presents options to user
+	system("clear");		//clears terminal window
+	cout << endl << "---------------" << endl;
+	cout << " Choose Video Capture[0] or load a Video File[1]" << endl;
+	cout << "---------------" << endl << endl;
+	cin >> type;
+
+  if(type)
+  {
+    namedWindow( "Video File", 1);
+    for( ; ; )
+    {
+      capture >> frame;
+      if(frame.empty())
+        break;
+      imshow("Video File", frame);
+
+			//update the background model
+			pMOG2->apply(frame, fgMaskMOG2);
+			//get the frame number and write it on the current frame
+			stringstream ss;
+			rectangle(frame, cv::Point(10, 2), cv::Point(100,20),
+			          cv::Scalar(255,255,255), -1);
+			ss << capture.get(CAP_PROP_POS_FRAMES);
+			string frameNumberString = ss.str();
+			putText(frame, frameNumberString.c_str(), cv::Point(15, 15),
+			        FONT_HERSHEY_SIMPLEX, 0.5 , cv::Scalar(0,0,0));
+			//show the current frame and the fg masks
+			imshow("Video File Subtracted", fgMaskMOG2);
+
+      waitKey(20);
+    }
+    waitKey(0);
+  }
+	else
+	{
+		namedWindow("Video Capture", 1);
+		for(;;)
+		{
+			cap >> frame;
+			if(frame.empty())
+				break;
+			imshow("Video Capture", frame);
+			pMOG2->apply(frame, fgMaskMOG2);
+			imshow("Video Capture Subtracted", fgMaskMOG2);
+			if (waitKey(5) >= 0) break;				//waits 30ms for program to render next frame
+		}
+		waitKey(0);
+}
+
+
+    return 0;
 
 }
 
