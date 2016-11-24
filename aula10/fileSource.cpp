@@ -31,8 +31,9 @@ void MatchingMethod( int, void* );
 int ex1(){
 
   /// Load image and template
-  img = imread( "../images/lena.jpg", 1 );
-  templ = imread( "../images/lena_template.jpg", 1 );
+  img = imread( "../images/placas_turned.jpg", 1 );
+  templ = imread( "../images/pare.jpg", 1 );
+
 
   /// Create windows
   namedWindow( image_window, CV_WINDOW_AUTOSIZE );
@@ -62,7 +63,7 @@ void MatchingMethod( int, void* )
   int result_cols =  img.cols - templ.cols + 1;
   int result_rows = img.rows - templ.rows + 1;
 
-  result.create( result_rows, result_cols, CV_32FC1 );
+    result.create( result_rows, result_cols, CV_32FC1 );
 
   /// Do the Matching and Normalize
   matchTemplate( img, templ, result, match_method );
