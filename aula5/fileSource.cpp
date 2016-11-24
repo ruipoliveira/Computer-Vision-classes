@@ -399,19 +399,17 @@ int ex3(){
 
 int ex4(){
 
-<<<<<<< Updated upstream
+
     cv::FileStorage fs("../CamParams.xml", cv::FileStorage::READ);
     cv::Mat intrinsic = cv::Mat(3, 3, CV_32FC1);
     cv::Mat distCoeffs;
     fs["cameraMatrix"] >> intrinsic;
     fs["distCoeffs"] >> distCoeffs;
-    // ChessBoard Properties
-    int board_w = 9;
-=======
+
   // ChessBoard Properties
     int n_boards = 14; //Number of images
     int board_w = 9;
->>>>>>> Stashed changes
+
     int board_h = 6;
 
     int board_sz = board_w * board_h;
@@ -430,7 +428,6 @@ int ex4(){
 
     int k=0;
 
-<<<<<<< Updated upstream
     std::vector<cv::Point3f> objectPoints, cubePoints;
     cubePoints.push_back(cv::Point3f(0.0, 0.0, 0.0));
     cubePoints.push_back(cv::Point3f(0.0, 1.0, 0.0));
@@ -440,24 +437,19 @@ int ex4(){
     cubePoints.push_back(cv::Point3f(0.0, 1.0, -1.0));
     cubePoints.push_back(cv::Point3f(1.0, 0.0, -1.0));
     cubePoints.push_back(cv::Point3f(1.0, 1.0, -1.0));
-=======
+
     int board_size = board_w * board_h;
->>>>>>> Stashed changes
+
 
     for (int i = 0; i < board_h; i++)
     for (int j = 0; j < board_w; j++)
     objectPoints.push_back(cv::Point3f((float)j,(float)i, 0.0));
 
-<<<<<<< Updated upstream
-    cv::Mat image;
     int i = 0;
-=======
     VideoCapture capture(0);
->>>>>>> Stashed changes
 
     int sucesses = 0;
 
-    cv::VideoCapture cap(0);
     if (!cap.isOpened()){
         std::cout << "Cannot open the video file" << std::endl;
         getchar();
@@ -469,19 +461,17 @@ int ex4(){
         desenharCubo(&image, board_w, board_h,  &intrinsic, &distCoeffs, &cubePoints, &objectPoints);
         imshow("cam", image);
 
-<<<<<<< Updated upstream
         if(cv::waitKey(30) >= 0) break;
     }
-=======
+
     cv::Mat grey_image;
 while (true){
         cap >> image;
->>>>>>> Stashed changes
 
         cvtColor(image,image_gray,CV_BGR2GRAY);
         int key = waitKey(10);
 
-<<<<<<< Updated upstream
+}
 }
 
 
@@ -523,7 +513,7 @@ void desenharCubo(cv::Mat *image, int board_w,int board_h, cv::Mat *intrinsic, c
     line(*image, imagePoints[1], imagePoints[5], cv::Scalar( 0, 255, 0 ), 2);
     line(*image, imagePoints[2], imagePoints[6], cv::Scalar( 0, 255, 0 ), 2);
     line(*image, imagePoints[3], imagePoints[7], cv::Scalar( 0, 255, 0 ), 2);
-=======
+
         imshow("cam", image);
         if (key == 32){
             sprintf(filename,"../aula5-resources/images//nossasimagens%02d.jpg",k+1);
@@ -641,7 +631,6 @@ void desenharCubo(cv::Mat *image, int board_w,int board_h, cv::Mat *intrinsic, c
     }
 
     return 0;
->>>>>>> Stashed changes
 
 }
 

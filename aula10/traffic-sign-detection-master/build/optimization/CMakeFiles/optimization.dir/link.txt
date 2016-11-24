@@ -1,0 +1,2 @@
+/usr/bin/ar qc liboptimization.a  CMakeFiles/optimization.dir/smartOptimisation.cpp.o CMakeFiles/optimization.dir/SuperFormula.cpp.o
+/usr/bin/ranlib liboptimization.a

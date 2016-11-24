@@ -1,0 +1,2 @@
+/usr/bin/ar qc libimg_processing.a  CMakeFiles/img_processing.dir/colorConversion.cpp.o CMakeFiles/img_processing.dir/segmentation.cpp.o CMakeFiles/img_processing.dir/imageProcessing.cpp.o CMakeFiles/img_processing.dir/contour.cpp.o
+/usr/bin/ranlib libimg_processing.a

@@ -1,0 +1,2 @@
+/usr/bin/ar qc libcommon.a  CMakeFiles/common.dir/random-standalone.cpp.o CMakeFiles/common.dir/timer.cpp.o
+/usr/bin/ranlib libcommon.a

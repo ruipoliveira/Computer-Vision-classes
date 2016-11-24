@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/tomas/Dropbox/UNIVERSIDADE/5Ano/VC/CV1617-68779-68129.git/aula10/traffic-sign-detection-master/src/common/random-standalone.cpp
+random-standalone.h
+/home/tomas/Dropbox/UNIVERSIDADE/5Ano/VC/CV1617-68779-68129.git/aula10/traffic-sign-detection-master/src/common/random-standalone.h
+cfloat
+-
+
+/home/tomas/Dropbox/UNIVERSIDADE/5Ano/VC/CV1617-68779-68129.git/aula10/traffic-sign-detection-master/src/common/random-standalone.h
+cmath
+-
+limits
+-
+
+/home/tomas/Dropbox/UNIVERSIDADE/5Ano/VC/CV1617-68779-68129.git/aula10/traffic-sign-detection-master/src/common/timer.cpp
+timer.h
+/home/tomas/Dropbox/UNIVERSIDADE/5Ano/VC/CV1617-68779-68129.git/aula10/traffic-sign-detection-master/src/common/timer.h
+
+/home/tomas/Dropbox/UNIVERSIDADE/5Ano/VC/CV1617-68779-68129.git/aula10/traffic-sign-detection-master/src/common/timer.h
+chrono
+-
+iostream
+-
+
