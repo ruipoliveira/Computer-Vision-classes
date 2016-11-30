@@ -338,7 +338,6 @@ int ex6_1(){
 int ex6_2(){
 
 
-
     Mat src_gray, src;
 
     src = imread("../images/moedas.jpg", CV_LOAD_IMAGE_COLOR);   // Read the file
