@@ -58,6 +58,15 @@
 * [Report](https://github.com/toomyy94/CV1617-68779-68129/blob/master/docs/reports/pdfs/VC1617_report_class10.pdf)
 * [Source code](https://github.com/toomyy94/CV1617-68779-68129/tree/master/aula10)
 
+
+#### Aula 11 (Features)
+* [Slides](https://github.com/toomyy94/CV1617-68779-68129/blob/master/docs/slides/VC1617-lecture11.pdf)
+* [Assignments](https://github.com/toomyy94/CV1617-68779-68129/blob/master/docs/enunciation/VC1617-exercises11.pdf)
+* [Report](https://github.com/toomyy94/CV1617-68779-68129/blob/master/docs/reports/pdfs/VC1617_report_class11.pdf)
+* [Source code](https://github.com/toomyy94/CV1617-68779-68129/tree/master/aula11)
+
+
+
 ---
 ### Slides & Assignments
 
