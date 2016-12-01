@@ -13,9 +13,11 @@
 int main(int argc, char **argv){
     int val_return;
 
-    val_return = ex1_1();
+    //val_return = ex1_1();
     //val_return = ex1_2();
-    //val_return = ex2();
+    //val_return = ex2_SIFT_AND_FAST();
+    //val_return = ex2_SURF1();
+    val_return = ex2_SURF2();
 
     return val_return;
 

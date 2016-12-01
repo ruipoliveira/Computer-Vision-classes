@@ -5,5 +5,6 @@
 
 int ex1_1();
 int ex1_2();
-int ex2();
-
+int ex2_SIFT_AND_FAST();
+int ex2_SURF1();
+int ex2_SURF2();
