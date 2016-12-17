@@ -1,5 +1,8 @@
 # Computer Vision 2016
 
+Material and resolutions of the exercises of computer vision classes. Opencv,  C++
+University of Aveiro 2016
+
 ---
 ### Problems 
 #### Aula 1 (Introduction to the Course)
